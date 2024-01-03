@@ -1,4 +1,4 @@
-# Group Project Title: Video Game Catalogue
+## Group Project Title: Video Game Catalogue
 
 ## Overview
 
