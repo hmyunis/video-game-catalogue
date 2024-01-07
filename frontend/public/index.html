@@ -8,13 +8,17 @@
     <link rel="icon" type="image/png" href="./images/favicon.png" />
   </head>
   <body class="bg-gradient-to-br from-[#09203f] to-[#537895] text-white">
-    <main class="h-screen flex flex-col items-center justify-center">
-      <h1 class="text-4xl font-mono">Video Game Catalogue</h1>
-      <h2 class="text-2xl text-[#1efe80]">
+    <main class="h-screen flex flex-col justify-center">
+      <h1 class="text-2xl md:text-4xl text-center font-mono mb-2">
+        Video Game Catalogue
+      </h1>
+      <h2 class="text-lg md:text-2xl text-center text-[#1efe80]">
         Explore, track, and manage your video game collection.
       </h2>
-      <section id="signup" class="w-1/3 py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Sign Up Now</h2>
+      <section id="signup" class="w-2/3 md:w-[400px] self-center my-10">
+        <h2 class="text-xl md:text-3xl font-bold text-center mb-8">
+          Sign Up Now
+        </h2>
         <form
           action="http://localhost:3000/signup"
           method="post"
@@ -22,27 +26,29 @@
         >
           <label
             for="username"
-            class="block text-gray-300 text-xl font-semibold mb-2"
+            class="block text-gray-300 text-sm md:text-xl font-semibold mb-2"
             >Username:</label
           >
           <input
             type="text"
             id="username"
             name="username"
+            placeholder="User Name"
             required
-            class="w-full px-3 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black"
+            class="w-full px-3 py-2 leading-tight rounded appearance-none outline-green-300 transition duration-300 text-black"
           />
           <label
             for="password"
-            class="block text-gray-300 text-xl font-semibold mb-2 mt-4"
+            class="block text-gray-300 text-sm md:text-xl font-semibold mb-2 mt-4"
             >Password:</label
           >
           <input
             type="password"
             id="password"
             name="password"
+            placeholder="Password"
             required
-            class="w-full px-3 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black"
+            class="w-full px-3 py-2 leading-tight rounded appearance-none outline-green-300 transition duration-300 text-black"
           />
           <div class="text-center">
             <button
@@ -54,7 +60,7 @@
           </div>
         </form>
       </section>
-      <h3>
+      <h3 class="text-center">
         Alreay have an account?
         <span
           id="signin"
