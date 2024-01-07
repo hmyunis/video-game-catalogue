@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="h-14 sticky top-0">
+        <div class="bg-slate-500 flex justify-between px-3 py-1">
+            <a href="index.html" class="self-center hover:scale-110 transition-all"><img src="images/logo.svg" alt="Logo"></a>
+            <div class="flex gap-8">
+                <a href="home.html" class="self-center text-2xl hover:-translate-y-1 hover:text-slate-200 transition-all duration-300">Browse</a>
+                <a href="collection.html" class="self-center text-2xl hover:-translate-y-1 hover:text-slate-200 transition-all duration-300">Collection</a>
+                <a href="profile.html" class="hover:scale-110 transition-all"><img src="images/avatar.jpg" alt="Profile" class="w-12 border-2 border-[#1efe80] rounded-full"></a>
+            </div>
+        </div>
+    </header>
+    <main class="bg-[#272B34] flex h-[85vh] justify-center gap-8 py-3">
+        <aside class="rounded-xl w-1/5 h-5/6 bg-slate-400 p-5">
+            <figure class="text-center my-5">
+                <img class="mx-auto border-4 w-48 rounded-full" src="images/avatar.jpg" alt="Profile Picture">
+                <figcaption class="text-2xl" id="username">Meowsalot</figcaption>
+            </figure>
+            <table class="text-left">
+                <tr>
+                    <th>Join date</th>
+                    <td>Jul 11, 2023</td>
+                </tr>
+                <tr>
+                    <th>Played games</th>
+                    <td id="played-games-count">13</td>
+                </tr>
+            </table>
+            <button class="w-full mx-auto mt-12 text-xl border rounded-3xl bg-pink-200 py-1 hover:bg-red-500 hover:text-white text-red-500">Log out</button>
+        </aside>
+        <div class="w-3/5 h-5/6 rounded-xl bg-slate-600 text-slate-300">
+            <form class="m-3 p-24" action="" method="post">
+                <div class="flex justify-center">
+                    <label class="w-1/2 text-2xl" for="">Username</label>
+                    <input placeholder="Meowsalot" class="p-2 w-1/2 h-10 rounded-xl border-2 border-slate-500" name="username" type="text">
+                </div>
+                <div class="flex justify-center my-4">
+                    <label class="w-1/2 text-2xl" for="">Password</label>
+                    <input placeholder="ilovefish" class="p-2 w-1/2 h-10 rounded-xl border-2 border-slate-500" name="username" type="password">
+                </div>
+                <p class="text-center my-5">
+                    <input class="border-2 bg-slate-800 hover:bg-slate-300 hover:font-semibold hover:text-slate-800 rounded-3xl px-8 py-2 text-xl" value="Update" type="submit">
+                </p>
+            </form>
+
+        </div>
+    </main>
+    <footer class="bg-slate-500 h-10 flex">
+        <p class="m-auto h-fit">&copy; 2024 Video Game Catalogue. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

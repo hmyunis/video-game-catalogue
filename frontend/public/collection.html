@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-white">
+    <header class="h-14 sticky top-0">
+        <div class="bg-slate-500 flex justify-between px-3 py-1">
+            <a href="index.html" class="self-center hover:scale-110 transition-all"><img src="images/logo.svg" alt="Logo"></a>
+            <div class="flex gap-8">
+                <a href="home.html" class="self-center text-2xl hover:-translate-y-1 hover:text-[#1efe80] transition-all duration-300">Browse</a>
+                <a href="collection.html" class="self-center text-[#1efe80] text-2xl hover:-translate-y-1 transition-all duration-300">Collection</a>
+                <a href="profile.html" class="hover:scale-110 transition-all"><img src="images/avatar.jpg" alt="Profile" class="w-12 rounded-full"></a>
+            </div>
+        </div>
+    </header>
+    <main class="flex">
+        <aside class="bg-[#21242C] w-1/6 min-h-screen flex flex-col text-center">
+            <nav>
+                <ul class="flex flex-col text-2xl">
+                    <li class="text-left p-5 pl-2">Catagories</li>
+                    <li class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all text-[#1EFE80] border-r-4 border-[#1EFE80]"></i><a href="">Played</a></li>
+                    <li class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all"><a href="">Playing</a></li>
+                    <li class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all">Planned</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div id="collection-container" class="bg-[#272B34] w-5/6 min-h-screen p-10">
+            <div class="flex flex-wrap" id="game-collections-container">
+                <div class="w-72 m-5 text-white rounded-xl bg-slate-900 hover:-translate-y-3 transition-all duration-300">
+                    <img src="images/avatar-2.jpg" alt="Valorant" class="rounded-t-xl">
+                    <section class="p-3">
+                        <hgroup>
+                            <h3 class="text-3xl" id="game-title">Valorant</h3>
+                            <h5 class="text-sm text-slate-500" id="game-release-date">June 2, 2020</h5>
+                        </hgroup>
+                        <div class="flex justify-between mt-1">
+                            <button class="text-sm text-blue-500" id="game-details">Details</button>
+                            <section class="flex gap-3">
+                                <button class="bg-red-500 p-1 px-2 rounded hover:bg-white hover:text-red-600">Remove</button>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <footer class="bg-slate-500 h-10 flex">
+        <p class="m-auto h-fit">&copy; 2024 Video Game Catalogue. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

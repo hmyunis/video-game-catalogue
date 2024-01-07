@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-white">
+    <header class="h-14 sticky top-0">
+        <div class="bg-slate-500 flex justify-between px-3 py-1">
+            <a href="index.html" class="self-center hover:scale-110 transition-all"><img src="images/logo.svg" alt="Logo"></a>
+            <div class="flex gap-8">
+                <a href="home.html" class="self-center text-[#1efe80] text-2xl hover:-translate-y-1 transition-all duration-300">Browse</a>
+                <a href="collection.html" class="self-center text-2xl hover:-translate-y-1 hover:text-slate-200 transition-all duration-300">Collection</a>
+                <a href="profile.html" class="hover:scale-110 transition-all"><img src="images/avatar.jpg" alt="Profile" class="w-12 rounded-full"></a>
+            </div>
+        </div>
+    </header>
+    <main class="bg-[#272B34] min-h-screen">
+        <div class="p-5">
+            <h1 class="text-5xl py-2">Browse</h1>
+            <div class="flex flex-wrap">
+                <p class="m-3">Sort by Genre:</p>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Shooter</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Action</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Horror</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Fighting</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Anime</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">RPG</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Strategy</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Racing</button>
+                <button class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all">Sports</button>
+            </div>
+            <hr class="border border-slate-600">
+        </div>
+        <div class="flex flex-wrap px-5" id="browse-games-container">
+            <div class="w-72 m-5 text-white rounded-xl bg-slate-900 hover:-translate-y-3 transition-all duration-300">
+                <img src="images/avatar-2.jpg" alt="Valorant" class="rounded-t-xl">
+                <section class="p-3">
+                    <hgroup>
+                        <h3 class="text-3xl" id="game-title">Valorant</h3>
+                        <h5 class="text-sm text-slate-500" id="game-release-date">June 2, 2020</h5>
+                    </hgroup>
+                    <div class="flex justify-between mt-1">
+                        <button class="text-sm text-blue-500" id="game-details">Details</button>
+                        <section class="flex gap-3">
+                            <select id="add-to-collection" class="text-black bg-[#1efe80] rounded">
+                                <option value="" disabled selected>Add to</option>
+                                <option value="played">Played</option>
+                                <option value="playing">Playing</option>
+                                <option value="planned">Planned</option>
+                            </select>
+                            <button class="bg-blue-400 p-1 px-2 rounded hover:bg-white hover:text-blue-600">Save</button>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-slate-500 h-10 flex">
+        <p class="m-auto h-fit">&copy; 2024 Video Game Catalogue. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

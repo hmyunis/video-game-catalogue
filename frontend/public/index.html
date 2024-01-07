@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Catalogue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-[#09203f] to-[#537895] text-white">
+    <main class="h-screen flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-mono">Video Game Catalogue</h1>
+        <h2 class="text-2xl text-[#1efe80]">Explore, track, and manage your video game collection.</h2>
+        <section id="signup" class="w-1/3 py-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Sign Up Now</h2>
+            <form action="http://localhost:3000/signup" method="post" class="mx-auto">
+                <label for="username" class="block text-gray-300 text-xl font-semibold mb-2">Username:</label>
+                <input type="text" id="username" name="username" required
+                    class="w-full px-3 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black">
+                <label for="password" class="block text-gray-300 text-xl font-semibold mb-2 mt-4">Password:</label>
+                <input type="password" id="password" name="password" required
+                    class="w-full px-3 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black">
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6 transition duration-300">Sign
+                        Up</button>
+                </div>
+            </form>
+        </section>
+        <h3>Alreay have an account? <span id="signin" class="underline cursor-pointer text-blue-400 hover:text-blue-300">Sign In</span></h3>
+        <a href="home.html" class="text-green-400 text-xs m-3 ml-auto">Sign in as Meowsalot 🐈</a>
+    </main>
+
+</body>
+</html>
