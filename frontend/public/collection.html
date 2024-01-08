@@ -4,65 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collection</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="./images/favicon.png" />
   </head>
   <body class="text-white">
     <header class="h-14 sticky top-0">
       <div class="bg-slate-500 flex md:justify-between px-3 py-1 flex-wrap">
-        <a
-          href="index.html"
-          class="flex justify-center w-full md:w-auto hover:scale-110 transition-all"
-          ><img src="images/logo.svg" alt="Logo" class="m-2 md"
-        /></a>
+        <a href="index.html" class="flex justify-center w-full md:w-auto hover:scale-110 transition-all"><img
+            src="images/svg/logo.svg" alt="Logo" class="m-2 md"></a>
         <div
-          class="min-[480px]:hidden text-green-400 hover:text-green-300 flex items-center justify-center w-full text-lg"
-        >
-          <img src="#" alt="NavMenu and Search" />
+          class="min-[480px]:hidden text-green-400 hover:text-green-300 flex items-center justify-center w-full text-lg">
+          <img src="images/svg/burger.svg" class="w-8 hover:scale-125 transition-transform" alt="Menu">
         </div>
         <div
-          class="hidden gap-2 justify-between md:justify-start md:gap-8 w-full md:w-auto border-t-black md:border-non min-[480px]:flex min-[480px]:flex-wrap md:flex-nowrap"
-        >
+          class="hidden gap-2 justify-between md:justify-start md:gap-8 w-full md:w-auto border-t-black md:border-non min-[480px]:flex min-[480px]:flex-wrap md:flex-nowrap">
           <div
-            class="w-full min-[480px]:w-3/12 md:hidden text-green-400 hover:text-green-300 flex items-center text-lg justify-center min-[480px]:justify-start"
-          >
-            <img src="#" alt="NavMenu" />
+            class="w-full min-[480px]:w-3/12 md:hidden text-green-400 hover:text-green-300 flex items-center text-lg justify-center min-[480px]:justify-start">
+            <img src="images/svg/burger.svg" class="w-8 hover:scale-110 transition-transform" id="burger-menu-icon" alt="Menu">
           </div>
-          <div
-            class="hidden justify-center md:flex order-1 md:order-none min-[480px]:w-full"
-          >
-            <a
-              href="home.html"
-              class="self-center text-[#1efe80] text-2xl hover:-translate-y-1 transition-all duration-300 mr-3"
-              >Browse</a
-            >
-            <a
-              href="collection.html"
-              class="self-center text-2xl hover:-translate-y-1 hover:text-slate-200 transition-all duration-300"
-              >Collection</a
-            >
+          <div class="hidden justify-center md:flex order-1 md:order-none min-[480px]:w-full">
+            <a href="home.html"
+              class="self-center text-2xl hover:-translate-y-1 transition-all duration-300 mr-5">Browse</a>
+            <a href="collection.html"
+              class="self-center text-[#1efe80] text-2xl hover:-translate-y-1 hover:text-slate-200 transition-all duration-300">Collection</a>
           </div>
-          <div
-            class="flex items-center w-full justify-center min-[480px]:justify-end min-[480px]:w-8/12"
-          >
-            <input
-              type="text"
-              placeholder="Search"
-              class="p-2 rounded-xl border-2 border-slate-500"
-            />
-            <button
-              class="ml-2 bg-slate-500 hover:bg-slate-400 text-white px-4 py-2 rounded-xl transition-colors duration-300"
-            >
-              Search
-            </button>
-            <a
-              href="profile.html"
-              class="hover:scale-110 transition-all shrink-0"
-              ><img
-                src="images/avatar.jpg"
-                alt="Profile"
-                class="w-12 border-2 border-[#1efe80] rounded-full"
-            /></a>
+          <div class="flex items-center w-full justify-center min-[480px]:justify-end min-[480px]:w-8/12">
+            
+            <a href="profile.html" class="hover:scale-110 transition-all shrink-0"><img src="images/avatar.jpg"
+                alt="Profile" class="w-12 border-2 rounded-full"></a>
           </div>
         </div>
       </div>
@@ -77,17 +46,17 @@
             <li
               class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all text-[#1EFE80] border-r-4 border-[#1EFE80]"
             >
-              <a href="">Played</a>
+              <button id="played-tab">Played</button>
             </li>
             <li
               class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all"
             >
-              <a href="">Playing</a>
+              <button id="playing-tab">Playing</button>
             </li>
             <li
               class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all"
             >
-              <a href="">Planned</a>
+              <button id="planned-tab">Planned</button>
             </li>
           </ul>
         </nav>
@@ -99,7 +68,7 @@
         <div
           class="flex md:hidden justify-center text-lg text-green-400 hover:text-green-300"
         >
-          <img src="#" alt="Catagories" />
+          <img src="images/svg/categories.svg" class="mr-auto w-8 hover:scale-125 transition-transform" alt="Catagories" />
         </div>
         <div
           class="flex flex-wrap justify-center md:justify-start"
