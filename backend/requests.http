@@ -45,10 +45,10 @@ POST http://localhost:3000/games/new
 Content-Type: application/json
 
 {
-  "title": "Call Of Duty 4",
-  "description": "Classic shooting game with good visuals.",
+  "title": "Borderlands 2",
+  "description": "Classic shooting game with 3D visuals.",
   "genre": "Shooting",
-  "platform": "PC",
+  "platform": "PS3",
   "releaseDate": "2014-02-24"
 }
 
