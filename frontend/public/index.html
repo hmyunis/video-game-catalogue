@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="./images/favicon.png" />
   </head>
-  <body class="bg-gradient-to-br from-[#09203f] to-[#537895] text-white">
+  <body class="bg-slate-300 flex justify-center flex-col items-center">
+    <div class="rounded-xl shadow-2xl bg-slate-50 w-3/4 mt-3 gap-3 flex mb-3 h-5/6">
+      <div class="Nolimit">
     <main class="h-screen flex flex-col justify-center">
-      <h1 class="text-2xl md:text-4xl text-center font-mono mb-2">
-        Video Game Catalogue
+      <h1 class="text-2xl md:text-4xl text-center font-mono mb-2 mt-5 text-white">
+        Video Game <br> Catalogue
       </h1>
-      <h2 class="text-lg md:text-2xl text-center text-[#1efe80]">
+      <div class="h-5/6">" "</div>
+      <h2 class="text-lg md:text-2xl text-center text-[#1efe80] mb-8">
         Explore, track, and manage your video game collection.
       </h2>
+      
+    </div>
+    <div>
       <section id="signup" class="w-2/3 md:w-[400px] self-center my-10">
+        
         <h2 class="text-xl md:text-3xl font-bold text-center mb-8">
           Sign Up Now
         </h2>
@@ -26,8 +33,8 @@
         >
           <label
             for="username"
-            class="block text-gray-300 text-sm md:text-xl font-semibold mb-2"
-            >Username:</label
+            class="blocktext-sm  font-semibold mb-2"
+            >Username*:</label
           >
           <input
             type="text"
@@ -39,14 +46,27 @@
           />
           <label
             for="password"
-            class="block text-gray-300 text-sm md:text-xl font-semibold mb-2 mt-4"
-            >Password:</label
+            class="block  text-sm  font-semibold mb-2 mt-4"
+            >Password*:</label
           >
           <input
             type="password"
             id="password"
             name="password"
             placeholder="Password"
+            required
+            class="w-full px-3 py-2 leading-tight rounded appearance-none outline-green-300 transition duration-300 text-black"
+          />
+          <label
+            for="Confirmpassword"
+            class="block  text-sm  font-semibold mb-2 mt-4"
+            >Confirm Password:</label
+          >
+          <input
+            type="password"
+            id="Confirmpassword"
+            name="password"
+            placeholder="Confirm Password"
             required
             class="w-full px-3 py-2 leading-tight rounded appearance-none outline-green-300 transition duration-300 text-black"
           />
@@ -60,6 +80,7 @@
           </div>
         </form>
       </section>
+      <div class="flex-col items-center mt-0">
       <h3 class="text-center">
         Alreay have an account?
         <span
@@ -71,6 +92,12 @@
       <a href="home.html" class="text-green-400 text-xs m-3 ml-auto"
         >Sign in as Meowsalot 🐈</a
       >
+    </div>
+      </div>
+      
+
+    </div>
+      <script src="https://cdn.tailwindcss.com"></script>
     </main>
   </body>
 </html>
