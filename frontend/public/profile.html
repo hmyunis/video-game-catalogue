@@ -6,8 +6,9 @@
     <title>Profile</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="h-screen flex flex-col justify-between bg-[#272B34]">
     <header class="h-14 sticky top-0">
       <div class="bg-slate-500 flex md:justify-between px-3 py-1 flex-wrap">
         <a
@@ -67,48 +68,62 @@
         </div>
       </div>
     </header>
-    <main class="bg-[#272B34] flex h-[85vh] justify-center gap-8 py-3">
-      <aside class="rounded-xl w-1/5 h-5/6 bg-slate-400 p-5">
-        <figure class="text-center my-5">
+    <main
+      class="bg-[#272B34] pt-40 mb-5 min-[480px]:pt-20 md:pt-0 md:mb-0 flex justify-center flex-wrap md:flex-nowrap gap-8"
+    >
+      <aside
+        class="rounded-xl bg-slate-400 mx-5 py-5 md:p-5 w-full md:my-5 md:mr-0 md:w-1/2"
+      >
+        <figure class="text-center">
           <img
             class="mx-auto border-4 w-48 rounded-full"
             src="images/avatar.jpg"
             alt="Profile Picture"
           />
-          <figcaption class="text-2xl" id="username">Meowsalot</figcaption>
+          <figcaption class="text-lg md:text-2xl" id="username">
+            Meowsalot
+          </figcaption>
         </figure>
-        <table class="text-left">
-          <tr>
+        <table class="text-left flex justify-center mt-4">
+          <tr class="flex gap-3">
             <th>Join date</th>
             <td>Jul 11, 2023</td>
           </tr>
-          <tr>
-            <th>Played games</th>
-            <td id="played-games-count">13</td>
+          <tr class="flex gap-3">
+            <th class="">Played games</th>
+            <td id="played-games-count" class="">13</td>
           </tr>
         </table>
-        <button
-          class="w-full mx-auto mt-12 text-xl border rounded-3xl bg-pink-200 py-1 hover:bg-red-500 hover:text-white text-red-500"
-        >
-          Log out
-        </button>
+        <div class="flex justify-center">
+          <button
+            class="w-5/12 md:w-2/3 mx-auto mt-7 text-xl border rounded-3xl bg-pink-200 py-1 hover:bg-red-500 hover:text-white text-red-500"
+          >
+            Log out
+          </button>
+        </div>
       </aside>
-      <div class="w-3/5 h-5/6 rounded-xl bg-slate-600 text-slate-300">
-        <form class="m-3 p-24" action="" method="post">
-          <div class="flex justify-center">
+      <div
+        class="rounded-xl py-5 mx-5 bg-slate-600 text-slate-300 w-full md:my-5 md:ml-0 md:w-2/3"
+      >
+        <form
+          class="md:p-24 flex flex-col items-center"
+          action=""
+          method="post"
+        >
+          <div class="flex flex-col items-start-center">
             <label class="w-1/2 text-2xl" for="">Username</label>
             <input
               placeholder="Meowsalot"
-              class="p-2 w-1/2 h-10 rounded-xl border-2 border-slate-500"
+              class="p-2 w-full min-[480px]:w-[300px] h-10 rounded-xl border-2 border-slate-500"
               name="username"
               type="text"
             />
           </div>
-          <div class="flex justify-center my-4">
+          <div class="flex flex-col items-start-center my-5">
             <label class="w-1/2 text-2xl" for="">Password</label>
             <input
               placeholder="ilovefish"
-              class="p-2 w-1/2 h-10 rounded-xl border-2 border-slate-500"
+              class="p-2 w-full min-[480px]:w-[300px] h-10 rounded-xl border-2 border-slate-500"
               name="username"
               type="password"
             />
