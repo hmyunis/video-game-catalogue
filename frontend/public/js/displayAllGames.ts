@@ -38,7 +38,7 @@ function insertGameItemToHTML(gameObj) {
             <div class="flex justify-between mt-1">
                 <button class="text-sm text-blue-500" id="game-${id}-details" onclick="displayDetails(${id});">Details</button>
                 <section class="flex gap-3">
-                    <select id="add-to-collection" class="text-black bg-[#1efe80] rounded">
+                    <select id="add-to-collection-for-${id}" class="text-black bg-[#1efe80] rounded">
                         <option value="" disabled selected>Add to</option>
                         <option value="played">Played</option>
                         <option value="playing">Playing</option>
