@@ -63,7 +63,7 @@ DELETE http://localhost:3000/games/4
 
 
 ### Get all collections
-GET http://localhost:3000/collections
+GET http://localhost:3000/collections/1
 
 ### Get collection by Id
 
