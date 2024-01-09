@@ -76,17 +76,35 @@
             <li
               class="active-tab p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all text-[#1EFE80] border-r-4 border-[#1EFE80]"
             >
-              <button id="played-tab">Played</button>
+              <button
+                id="played-tab"
+                value="playedGames"
+                onclick="filterByTab(event.target.value)"
+              >
+                Played
+              </button>
             </li>
             <li
               class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all"
             >
-              <button id="playing-tab">Playing</button>
+              <button
+                id="playing-tab"
+                value="playingGames"
+                onclick="filterByTab(event.target.value)"
+              >
+                Playing
+              </button>
             </li>
             <li
               class="p-3 bg-[#272B34] my-2 hover:text-[#1EFE80] hover:translate-x-4 transition-all"
             >
-              <button id="planned-tab">Planned</button>
+              <button
+                id="planned-tab"
+                value="plannedGames"
+                onclick="filterByTab(event.target.value)"
+              >
+                Planned
+              </button>
             </li>
           </ul>
         </nav>
@@ -108,6 +126,7 @@
           class="flex flex-wrap justify-center md:justify-start"
           id="game-collections-container"
         >
+          <!-- This is were the cards would have appeard if it worked -->
           <div
             id="game-id-1"
             class="w-72 m-5 text-white rounded-xl bg-slate-900 overflow-hidden hover:-translate-y-3 transition-all duration-300"
@@ -263,6 +282,7 @@
               </div>
             </section>
           </div>
+          <!-- This is were the cards would have appeard if it worked -->
         </div>
       </div>
     </main>

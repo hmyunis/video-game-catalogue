@@ -9,13 +9,13 @@ function saveToCollection(gameId) {
     .then((user) => {
       userCollectionId = user["collectionId"];
 
-      fetch(`http://logalhost:300/collections/${userCollectionId}`)
+      fetch(`http://localhost:3000/collections/${userCollectionId}`)
         .then((res) => res.json())
         .then((userData) => {
           newUserData = { ...userData };
           newUserData[`${userChoice}Games`].append(gameId);
 
-          fetch(`http://logalhost:300/collections/${userCollectionId}`, {
+          fetch(`http://localhost:3000/collections/${userCollectionId}`, {
             method: "PATCH",
             headers: {
               "Content-type": "application/json; charset-utf8",
