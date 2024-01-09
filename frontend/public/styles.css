@@ -238,6 +238,7 @@ button,
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
+  appearance: button;
   /* 1 */
   background-color: transparent;
   /* 2 */
@@ -285,6 +286,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 
 [type='search'] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   /* 1 */
   outline-offset: -2px;
   /* 2 */
@@ -424,7 +426,6 @@ embed,
 object {
   display: block;
   /* 1 */
-  vertical-align: middle;
   /* 2 */
 }
 
@@ -720,7 +721,11 @@ video {
 .h-screen {
   height: 100vh;
 }
-
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* any large number can work */
+}
 .min-h-screen {
   min-height: 100vh;
 }
