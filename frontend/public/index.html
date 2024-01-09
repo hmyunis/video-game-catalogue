@@ -1,42 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Game Catalogue</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="h-screen items-center justify-center flex flex-col bg-slate-500 text-white">
-    <main class="h-5/6 w-5/6 flex items-center justify-center bg-gradient-to-br from-slate-300 to-slate-800 rounded-xl shadow-2xl">
-        <aside class="w-1/2 h-full pt-16 rounded-l-xl bg-[url('images/signup-bg.jpg')] bg-no-repeat bg-center bg-cover max-md:hidden">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body
+    class="h-screen items-center justify-center flex flex-col bg-slate-500 text-white"
+  >
+    <main
+      class="h-5/6 w-5/6 flex items-center justify-center bg-gradient-to-br from-slate-300 to-slate-800 rounded-xl shadow-2xl"
+    >
+      <aside
+        class="w-1/2 h-full pt-16 rounded-l-xl bg-[url('images/signup-bg.jpg')] bg-no-repeat bg-center bg-cover max-md:hidden"
+      >
+        <div class="text-center">
+          <h1 class="text-4xl max-md:text-xl font-mono max-md:block">
+            Video Game Catalogue
+          </h1>
+          <h2 class="text-xl max-md:text-lg font-mono text-blue-300">
+            Explore, track, and manage your video game collection.
+          </h2>
+        </div>
+      </aside>
+      <section
+        id="signup"
+        class="w-1/2 max-md:w-full h-full flex flex-col items-center justify-center rounded-r-xl p-8 max-md:p-0"
+      >
+        <h2 class="text-3xl font-bold text-center mb-4" id="signup-title">
+          Sign Up Now
+        </h2>
+        <form
+          class="mx-auto w-2/3 max-[300px]:w-full max-md:mx-0"
+          id="signup-form"
+        >
+          <label
+            for="username"
+            class="block text-gray-300 text-xl font-semibold mb-2"
+            >Username*:</label
+          >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            minlength="4"
+            maxlength="16"
+            autofocus
+            class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black"
+          />
+          <label
+            for="password"
+            class="block text-gray-300 text-xl font-semibold mb-2 mt-4"
+            >Password*:</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="8"
+            maxlength="32"
+            class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black"
+          />
+          <label
+            for="password"
+            class="block text-gray-300 text-xl font-semibold mb-2 mt-4"
+            >Confirm Password*:</label
+          >
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+            minlength="8"
+            maxlength="32"
+            class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black"
+          />
           <div class="text-center">
-            <h1 class="text-4xl max-md:text-xl font-mono max-md:block">Video Game Catalogue</h1>
-            <h2 class="text-xl max-md:text-lg font-mono text-blue-300">Explore, track, and manage your video game collection.</h2>
+            <button
+              id="submit-btn"
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded mt-6 transition duration-300"
+            >
+              Sign Up
+            </button>
           </div>
-        </aside>
-        <section id="signup" class="w-1/2 max-md:w-full h-full flex flex-col items-center justify-center rounded-r-xl p-8 max-md:p-0">
-            <h2 class="text-3xl font-bold text-center mb-4" id="signup-title">Sign Up Now</h2>
-              <form class="mx-auto w-2/3 max-[300px]:w-full max-md:mx-0" id="signup-form">
-                  <label for="username" class="block text-gray-300 text-xl font-semibold mb-2">Username*:</label>
-                  <input type="text" id="username" name="username" required minlength="4" maxlength="16" autofocus
-                      class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black">
-                  <label for="password" class="block text-gray-300 text-xl font-semibold mb-2 mt-4">Password*:</label>
-                  <input type="password" id="password" name="password" required minlength="8" maxlength="32"
-                      class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black">
-                  <label for="password" class="block text-gray-300 text-xl font-semibold mb-2 mt-4">Confirm Password*:</label>
-                  <input type="password" id="confirm-password" name="confirm-password" required minlength="8" maxlength="32"
-                      class="w-full px-2 py-2 leading-tight border rounded appearance-none focus:outline-none focus:shadow-outline transition duration-300 text-black">
-                  <div class="text-center">
-                      <button id="submit-btn" type="submit"
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded mt-6 transition duration-300">Sign
-                          Up</button>
-                  </div>
-                  <h3 id="already-have" class="text-center pt-10">Alreay have an account? <span id="signin" class="underline cursor-pointer text-blue-400 hover:text-blue-300">Sign In</span></h3>
-              </form>
-        </section>
-      </main>
-      <a href="home.html" class="text-green-400 m-3 ml-auto">Sign in as Meowsalot 🐈</a>
-      <p class="fixed bottom-3 text-center">&copy; 2024 Video Game Catalogue. All Rights Reserved.</p>
-  <script src="js/loginPage.js"></script>
-</body>
+          <h3 id="already-have" class="text-center pt-10">
+            Alreay have an account?
+            <span
+              id="signin"
+              class="underline cursor-pointer text-blue-400 hover:text-blue-300"
+              >Sign In</span
+            >
+          </h3>
+        </form>
+      </section>
+    </main>
+    <a href="home.html" class="text-green-400 m-3 ml-auto"
+      >Sign in as Meowsalot 🐈</a
+    >
+    <p class="fixed bottom-3 text-center">
+      &copy; 2024 Video Game Catalogue. All Rights Reserved.
+    </p>
+    <script src="js/loginPage.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
 </html>
