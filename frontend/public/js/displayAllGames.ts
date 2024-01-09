@@ -44,7 +44,7 @@ function insertGameItemToHTML(gameObj) {
                         <option value="playing">Playing</option>
                         <option value="planned">Planned</option>
                     </select>
-                    <button id="game-${id}-save" class="bg-blue-400 p-1 px-2 rounded hover:bg-white hover:text-blue-600">Save</button>
+                    <button id="game-${id}-save" onclick="saveToCollection(${id})" class="bg-blue-400 p-1 px-2 rounded hover:bg-white hover:text-blue-600">Save</button>
                 </section>
             </div>
         </section>
