@@ -7,7 +7,7 @@ import { UsersService } from 'src/users/users.service';
 export class jwtStratagy extends PassportStrategy(Strategy) {
   constructor(private userService: UsersService) {
     super({
-      secretOrKey: 'YouAreNotSupposedToHaveThis',
+      secretOrKey: process.env.JWT_SECRET,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
