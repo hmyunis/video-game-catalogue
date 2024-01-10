@@ -11,11 +11,8 @@ GET http://localhost:3000/users
 # GET http://localhost:3000/users?username=Mihawk_san
 
 ### Delete a user given id
-<<<<<<< HEAD
 DELETE http://localhost:3000/users/2
-=======
-DELETE http://localhost:3000/users/3
->>>>>>> 83d783c5879dbcb71a83a5ea4e04e0463c97c604
+
 
 ### Update a user
 PATCH http://localhost:3000/users/1
