@@ -1,4 +1,4 @@
-import { IsString, IsDateString } from "class-validator";
+import { IsString, IsDateString, IsUrl } from "class-validator";
 export class CreateGameDto {
     @IsString()
     title: string;
@@ -11,6 +11,13 @@ export class CreateGameDto {
     
     @IsString()
     platform: string;
+
+    @IsString()
+    publisher: string;
+
+    // @IsUrl()
+    @IsString()
+    imageUrl: string;
     
     @IsDateString()
     releaseDate: string;

@@ -13,6 +13,7 @@ import {
 import { AuthGuard } from 'src/guards/auth.guard';
 import { CollectionsService } from './collections.service';
 import { CreateCollectionDto } from './dto/create-collection.dto';
+import { GameStatus } from './collection.entity';
 
 @Controller('collections')
 export class CollectionsController {
@@ -34,8 +35,16 @@ export class CollectionsController {
   }
 
   @Get()
-  findAllCollections(@Query('id') id: string) {
-    return this.collectionsService.find(parseInt(id));
+  findAllCollections(@Query('status') status: GameStatus) {
+    return this.collectionsService.find(status);
+  }
+
+  @Get('/:userId')
+  findUserGames(
+    @Param('userId') userId: string,
+    @Query('status') status: GameStatus,
+  ) {
+    return this.collectionsService.getUserCollection(parseInt(userId), status);
   }
 
   @Delete('/:id')

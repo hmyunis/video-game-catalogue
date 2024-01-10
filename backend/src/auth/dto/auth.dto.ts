@@ -5,4 +5,6 @@ export class AuthDto {
     id: number;
     @Expose()
     username: string;
+    @Expose()
+    joinDate: string;
 }

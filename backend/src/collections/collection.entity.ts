@@ -1,36 +1,44 @@
-import { Game } from 'src/games/game.entity';
-import { User } from 'src/users/user.entity';
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, AfterInsert, AfterUpdate, AfterRemove, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  AfterInsert,
+  AfterUpdate,
+  AfterRemove,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Collection {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('simple-array', { nullable: true })
-  playedGames: Game[];
+  @Column({ nullable: true })
+  status: GameStatus;
 
-  @Column('simple-array', { nullable: true })
-  playingGames: Game[];
+  @Column({ nullable: true })
+  gameId: number;
 
-  @Column('simple-array', { nullable: true })
-  plannedGames: Game[];
-
-  @OneToMany(() => User, (user) => user.collection)
-  user: User[];
+  @Column({ nullable: true })
+  userId: number;
 
   @AfterInsert()
   logInsert() {
-    console.log('Inserted Collection with ID', this.id);
+    console.log('Inserted a record to Collection.');
   }
 
   @AfterUpdate()
   logUpdate() {
-    console.log('Updated Collection with ID', this.id);
+    console.log('Updated Collection.');
   }
 
   @AfterRemove()
   logRemove() {
-    console.log('Removed Collection with ID', this.id);
+    console.log('Removed a record from Collection.');
   }
+}
+
+export enum GameStatus {
+  'PLAYED' = 'PLAYED',
+  'PLAYING' = 'PLAYING',
+  'PLANNED' = 'PLANNED',
 }

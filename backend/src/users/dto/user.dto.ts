@@ -1,4 +1,4 @@
-import { Expose, Transform } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
 export class UserDto {
   @Expose()
@@ -7,7 +7,6 @@ export class UserDto {
   @Expose()
   username: string;
 
-  // @Transform(({ obj }) => obj.collection.id)
-  // @Expose()
-  // collectionId: number;
+  @Expose()
+  joinDate: string;
 }

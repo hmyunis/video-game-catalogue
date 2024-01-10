@@ -25,7 +25,7 @@ export class GamesController {
   }
 
   @Get('/:id')
-  async findGame(@Param('id') id: string) {
+  async findGameById(@Param('id') id: string) {
     const game = await this.gamesService.findOne(parseInt(id));
     if (!game) {
       throw new NotFoundException('game not found');
@@ -34,8 +34,13 @@ export class GamesController {
   }
 
   @Get()
-  findAllGames(@Query('title') title: string) {
-    return this.gamesService.find(title);
+  findAllGames(@Query('genre') genre: string) {
+    return this.gamesService.find(genre);
+  }
+
+  @Get('/search')
+  searchGames(@Query('keyword') keyword: string) {
+    return this.gamesService.findGames(keyword);
   }
 
   @Delete('/:id')

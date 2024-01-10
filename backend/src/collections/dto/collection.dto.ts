@@ -1,16 +1,16 @@
-import { Expose, Transform } from 'class-transformer';
-import { Game } from 'src/games/game.entity';
+import { Expose } from 'class-transformer';
+import { GameStatus } from '../collection.entity';
 
 export class CollectionDto {
   @Expose()
   id: number;
 
   @Expose()
-  playedGames: Game[];
+  status: GameStatus;
 
   @Expose()
-  playingGames: Game[];
+  userId: number;
 
   @Expose()
-  plannedGames: Game[];
+  gameId: number;
 }

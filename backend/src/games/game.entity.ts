@@ -1,5 +1,11 @@
-import { Collection } from 'src/collections/collection.entity';
-import { Entity, PrimaryGeneratedColumn, Column, AfterInsert, AfterUpdate, AfterRemove } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  AfterInsert,
+  AfterUpdate,
+  AfterRemove,
+} from 'typeorm';
 
 @Entity()
 export class Game {
@@ -19,7 +25,13 @@ export class Game {
   platform: string;
 
   @Column({ nullable: true })
+  publisher: string;
+
+  @Column({ nullable: true })
   releaseDate: string;
+
+  @Column({ nullable: true })
+  imageUrl: string;
 
   @AfterInsert()
   logInsert() {

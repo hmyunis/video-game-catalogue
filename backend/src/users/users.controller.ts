@@ -26,8 +26,7 @@ export class UsersController {
 
   @Get('/whoami')
   @UseGuards(AuthGuard) // Allow only signed in users
-  whoAmI(@CurrentUser() user: User) {
-    // get the User who's currently signed in
+  whoAmI(@CurrentUser() user: User) { // get the User who's currently signed in
     return user;
   }
 
@@ -43,11 +42,6 @@ export class UsersController {
   @Get()
   findAllUsers(@Query('username') username: string) {
     return this.usersService.find(username);
-  }
-
-  @Get('/collections')
-  findAllCollections(@Query('id') id: string) {
-    return this.usersService.findCollection(parseInt(id));
   }
 
   @Delete('/:id')

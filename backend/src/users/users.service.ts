@@ -23,10 +23,6 @@ export class UsersService {
     return this.repo.find({ where: { username } });
   }
 
-  findCollection(id: number) {
-    return this.collectionsService.find(id);
-  }
-
   async update(id: number, attrs: Partial<User>) {
     const user = await this.findOne(id);
     if (!user) {

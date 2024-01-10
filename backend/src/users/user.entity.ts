@@ -1,19 +1,34 @@
-import { Entity, PrimaryGeneratedColumn, Column, AfterRemove, AfterUpdate, AfterInsert, ManyToOne } from 'typeorm';
-import { Collection } from '../collections/collection.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  AfterRemove,
+  AfterUpdate,
+  AfterInsert,
+  BeforeInsert,
+} from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   username: string;
 
   @Column()
   password: string;
 
-  @ManyToOne(() => Collection, (collection) => collection.user)
-  collection: Collection;
+  @Column({default: false})
+  admin: boolean;
+
+  @Column({ nullable: true })
+  joinDate: string;
+
+  @BeforeInsert()
+  setJoinDate(): void {
+    this.joinDate = new Date().toDateString().substring(4);
+  }
 
   @AfterInsert()
   logInsert() {
@@ -29,5 +44,4 @@ export class User {
   logRemove() {
     console.log('Removed User with ID', this.id);
   }
-
 }

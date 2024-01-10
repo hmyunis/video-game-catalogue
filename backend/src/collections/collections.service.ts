@@ -1,13 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Collection } from './collection.entity';
+import { Collection, GameStatus } from './collection.entity';
 import { CreateCollectionDto } from './dto/create-collection.dto';
+import { GamesService } from 'src/games/games.service';
 
 @Injectable()
 export class CollectionsService {
   constructor(
     @InjectRepository(Collection) private repo: Repository<Collection>,
+    private gamesService: GamesService,
   ) {}
 
   create(collectionDto: CreateCollectionDto) {
@@ -22,8 +24,14 @@ export class CollectionsService {
     });
   }
 
-  find(id: number) {
-    return this.repo.find({ where: { id:id } });
+  find(status: GameStatus) {
+    return this.repo.find({ where: { status } });
+  }
+
+  async getUserCollection(userId: number, status: GameStatus) {
+    const collections = await this.repo.find({ where: { userId, status } });
+    const gameIds = await collections.map((col) => col.gameId);
+    return gameIds.map((id) => this.gamesService.findOne(id));
   }
 
   async update(id: number, attrs: Partial<Collection>) {

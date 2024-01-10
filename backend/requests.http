@@ -1,5 +1,45 @@
+# USERS CONTROLLER ENDPOINTS --------------------------------
+
+### Get the currently signed in user
+GET http://localhost:3000/users/whoami
+
+### Get user by id
+GET http://localhost:3000/users/1
+
+### Find all users with a given username
+GET http://localhost:3000/users
+# GET http://localhost:3000/users?username=Mihawk_san
+
+### Delete a user given id
+DELETE http://localhost:3000/users/3
+
+### Update a user
+PATCH http://localhost:3000/users/1
+content-type: application/json
+
+{
+  "password": "aaaaaaaa"
+}
+
+### Sign out
+POST http://localhost:3000/users/signout
+
+
+
+
+
+# {HAS NOT BEEN TESTED WELL}
+# AUTH CONTROLLER ENDPOINTS -----------------------------------
 ### Create a new user
 POST http://localhost:3000/signup
+content-type: application/json
+
+{
+  "username": "test@test.com",
+  "password": "12345678"
+}
+### Sign in as the new user
+POST http://localhost:3000/signin
 content-type: application/json
 
 {
@@ -16,85 +56,94 @@ content-type: application/json
   "password": "123456789"
 }
 
-### Get the currently signed in user
-GET http://localhost:3000/users/whoami
 
-### Sign out
-POST http://localhost:3000/users/signout
 
-### Find a particular user with a given ID
-GET http://localhost:3000/users/4
 
-### Find all users with a given username
-GET http://localhost:3000/users
-# GET http://localhost:3000/users?username=Mihawk_san
 
-### Delete a user given id
-DELETE http://localhost:3000/users/3
 
-### Update a user
-PATCH http://localhost:3000/users/4
-content-type: application/json
-
-{
-  "password": "aaaaa"
-}
+# GAMES CONTROLLER ENDPOINTS -------------------------------------
 
 ### Add new Game
 POST http://localhost:3000/games/new
 Content-Type: application/json
 
 {
-  "title": "Borderlands 2",
+  "title": "Borderlands 1",
   "description": "Classic shooting game with 3D visuals.",
   "genre": "Shooting",
+  "publisher": "Bandai Namco",
+  "imageUrl": "/images/borderlands-2.jpg",
   "platform": "PS3",
   "releaseDate": "2014-02-24"
 }
 
-### Get games by title
-GET http://localhost:3000/games?title=Call%20Of%20Duty%204
+### Get game by Id
+GET http://localhost:3000/games/3
 
 ### Get all games
 GET http://localhost:3000/games
 
+### Get games by genre
+GET http://localhost:3000/games?genre=Shooting
+
+### Search a game
+# DOESN'T WORK
+GET http://localhost:3000/games/search?keyword=Borderlands%202
+
 ### Delete a game by id
-DELETE http://localhost:3000/games/4
+DELETE http://localhost:3000/games/2
+
+### Update a game
+# DOESN'T WORK IF SOME PROPERTIES ARE MISSING. WORKS IF ALL ARE GIVEN.
+#FIX: create an update DTO to make optional USING ?.
+PATCH http://localhost:3000/games/3
+Content-Type: application/json
+
+{
+  "title": "Borderlands 3"
+}
 
 
-### Get all collections
-GET http://localhost:3000/collections/1
-
-### Get collection by Id
 
 
-### Get a user's collection
-GET http://localhost:3000/collections
+
+
+# COLLECTIONS CONTROLLER ENDPOINTS --------------------------------------
 
 ### Create collection
 POST http://localhost:3000/collections/new
 Content-Type: application/json
 
 {
-  "playedGames": [{
-  "title": "Call Of Duty 3",
-  "description": "Classic shooting game with good visuals.",
-  "genre": "Shooting",
-  "platform": "PC",
-  "releaseDate": "2014-02-24"
-}],
-  "playingGames": [{
-  "title": "Call Of Duty 2",
-  "description": "Classic shooting game with good visuals.",
-  "genre": "Shooting",
-  "platform": "PC",
-  "releaseDate": "2014-02-24"
-}],
-  "plannedGames": [{
-  "title": "Call Of Duty 1",
-  "description": "Classic shooting game with good visuals.",
-  "genre": "Shooting",
-  "platform": "PC",
-  "releaseDate": "2014-02-24"
-}]
+  "userId": 3,
+  "gameId": 1,
+  "status": "PLANNED"
+}
+
+### Get collection by Id
+GET http://localhost:3000/collections/1
+
+### Get all collections
+GET http://localhost:3000/collections
+
+### Get collection by status
+GET http://localhost:3000/collections?status=PLANNED
+
+### Get an array of game objects using userId+status
+# DOESN'T WORK
+GET http://localhost:3000/collections/3?status=PLANNED
+
+### Delete a collection by id
+DELETE http://localhost:3000/collections/1
+
+### Update a collection
+# DOESN'T WORK IF SOME PROPERTIES ARE MISSING. WORKS IF ALL ARE GIVEN.
+#FIX: create an update DTO to make optional USING ?.
+PATCH http://localhost:3000/collections/2
+Content-Type: application/json
+
+{
+  "status": "PLAYING",
+  "gameId": 4,
+  "userId": 3
 }

@@ -20,8 +20,21 @@ export class GamesService {
     });
   }
 
-  find(title: string) {
-    return this.repo.find({ where: { title } });
+  find(genre: string) {
+    return this.repo.find({ where: { genre } });
+  }
+
+  async findGames(keyword: string) {
+    // return this.repo
+    //   .createQueryBuilder('game')
+    //   .where('game.title ILIKE :title', { title: `%${keyword}%` })
+    //   .getMany();
+    const allGames = await this.find('');
+    console.log(allGames);
+
+    return allGames.filter((game) =>
+      game.title.toLowerCase().includes(keyword.toLowerCase()),
+    );
   }
 
   async update(id: number, attrs: Partial<Game>) {

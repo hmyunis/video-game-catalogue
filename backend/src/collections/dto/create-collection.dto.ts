@@ -1,12 +1,12 @@
-import { IsArray } from "class-validator";
-import { Game } from "src/games/game.entity";
+import { IsEnum, IsNumber } from "class-validator";
+import { GameStatus } from "../collection.entity";
 export class CreateCollectionDto {
-  @IsArray()
-  playedGames: Game[];
+  @IsEnum(GameStatus)
+  status: GameStatus;
 
-  @IsArray()
-  playingGames: Game[];
+  @IsNumber()
+  gameId: number;
 
-  @IsArray()
-  plannedGames: Game[];
+  @IsNumber()
+  userId: number;
 }
