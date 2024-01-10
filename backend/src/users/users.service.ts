@@ -6,8 +6,10 @@ import { CollectionsService } from 'src/collections/collections.service';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private repo: Repository<User>,
-  private collectionsService: CollectionsService){}
+  constructor(
+    @InjectRepository(User) private repo: Repository<User>,
+    private collectionsService: CollectionsService,
+  ) {}
   create(username: string, password: string) {
     const user = this.repo.create({ username, password });
     return this.repo.save(user);
@@ -23,12 +25,12 @@ export class UsersService {
     return this.repo.find({ where: { username } });
   }
 
-  async update(id: number, attrs: Partial<User>) {
+  async update(id: number, username: string, password: string) {
     const user = await this.findOne(id);
     if (!user) {
       throw new NotFoundException('user not found');
     }
-    Object.assign(user, attrs);
+    Object.assign(user, { username, password });
     return this.repo.save(user);
   }
 

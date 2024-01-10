@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Session } from '@nestjs/common';
+import { Body, Controller, Post, Session, Patch, Param } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthCredentialDto } from 'src/auth/dto/auth-credentials.dto';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
@@ -21,5 +21,10 @@ export class AuthController {
     const user = await this.authService.signIn(body.username, body.password);
     session.userId = user.id;
     return user;
+  }
+
+  @Patch('/:id')
+  updateUser(@Param('id') id: string, @Body() body: AuthCredentialDto) {
+    return this.authService.update(parseInt(id), body.username, body.password);
   }
 }
