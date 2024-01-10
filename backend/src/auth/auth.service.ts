@@ -40,8 +40,8 @@ export class AuthService {
       throw new BadRequestException('Wrong password');
     }
 
-    const payload = { username };
-    const accessToken = await this.jwtService.sign(payload);
+    const payload = { username: username };
+    const accessToken = await this.jwtService.signAsync(payload);
     return { accessToken };
   }
 }
