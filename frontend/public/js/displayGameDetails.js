@@ -3,7 +3,7 @@ async function displayDetails(gameId) {
     const gameObj = await response.json();
     const { title, description, genre, platform, publisher, releaseDate, imageUrl } = gameObj;
     const modalHTML = `
-    <div id="details-modal" class="fixed p-10 top-[50%] left-[50%] max-md:w-[95vw] translate-x-[-50%] translate-y-[-45%] h-[80vh] w-[80vw] rounded-xl shadow-2xl bg-slate-400 text-gray-800">
+    <div id="details-modal" class="fixed z-[1000] p-10 top-[50%] left-[50%] max-md:w-[95vw] translate-x-[-50%] translate-y-[-45%] h-[80vh] w-[80vw] rounded-xl shadow-2xl bg-slate-400 text-gray-800">
         <div class="w-full h-full flex max-md:flex-col max-md:overflow-y-scroll">
             <picture class="w-1/2 h-full max-md:w-full">
             <img src="${imageUrl}" alt="ac-origins" class="w-full h-full">

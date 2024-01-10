@@ -51,8 +51,7 @@ function deleteGame(gameId) {
                     })
                         .then(function (res) { return res.json(); })
                         .then(function (deletedGame) {
-                        var _a;
-                        createPopUpMessage("Game removed successfully ".concat((_a = deletedGame[0]) === null || _a === void 0 ? void 0 : _a.title, "."));
+                        createPopUpMessage("Game removed successfully.");
                         var gameElement = document.getElementById("game-id-".concat(gameId));
                         if (gameElement) {
                             gameElement.remove();

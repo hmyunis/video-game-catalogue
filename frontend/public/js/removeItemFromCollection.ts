@@ -13,7 +13,7 @@ async function deleteGame(gameId: number) {
     )
         .then((res) => res.json())
         .then((deletedGame) => {
-            createPopUpMessage(`Game removed successfully ${deletedGame[0]?.title}.`);
+            createPopUpMessage(`Game removed successfully.`);
             const gameElement = document.getElementById(`game-id-${gameId}`);
             if (gameElement) {
                 gameElement.remove();

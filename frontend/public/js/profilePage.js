@@ -131,3 +131,49 @@ function createPopUpMsg(msg) {
     }, 300);
   }, 2000);
 }
+
+const image = document.getElementById('user-avatar');
+
+let firstImageSrc = "images/avatar.jpg";
+let secondImageSrc = "images/avatar-2.jpg";
+
+image.addEventListener("mouseenter", function() {
+    fadeOut(image, function() {
+        image.src = secondImageSrc;
+        fadeIn(image);
+    });
+});
+
+image.addEventListener("mouseleave", function() {
+    fadeOut(image, function() {
+        image.src = firstImageSrc;
+        fadeIn(image);
+    });
+});
+
+function fadeOut(element, callback) {
+    let opacity = 1;
+    let fadeOutInterval = setInterval(function() {
+        if (opacity > 0) {
+            opacity -= 0.1;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(fadeOutInterval);
+            if (callback) {
+                callback();
+            }
+        }
+    }, 40);
+}
+
+function fadeIn(element) {
+    let opacity = 0;
+    let fadeInInterval = setInterval(function() {
+        if (opacity < 1) {
+            opacity += 0.1;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(fadeInInterval);
+        }
+    }, 40);
+}
