@@ -19,6 +19,7 @@ export class AuthController {
   @Post('/signin')
   async signIn(@Body() body: AuthCredentialDto) {
     const user = await this.authService.signIn(body.username, body.password);
+
     return user;
   }
 }
