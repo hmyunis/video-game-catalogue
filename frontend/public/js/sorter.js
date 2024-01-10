@@ -13,6 +13,8 @@ const RPG = document.getElementById("sort-by-rpg");
 const Strategy = document.getElementById("sort-by-strategy");
 const Racing = document.getElementById("sort-by-racing");
 const main = document.getElementById("browse-games-container");
+const Sport = document.getElementById("sort-by-sports");
+
 function game(link) {
   fetch(link)
     .then((games) => games.json())
@@ -132,4 +134,10 @@ shooter.addEventListener("click", (e) => {
   e.preventDefault();
   main.innerHTML = "";
   game(SEARCHAPI + "shooter");
+});
+
+Sport.addEventListener("click", (e) => {
+  e.preventDefault();
+  main.innerHTML = "";
+  game(SEARCHAPI + "Sport");
 });
