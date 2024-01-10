@@ -11,7 +11,7 @@ GET http://localhost:3000/users
 # GET http://localhost:3000/users?username=Mihawk_san
 
 ### Delete a user given id
-DELETE http://localhost:3000/users/1
+DELETE http://localhost:3000/users/2
 
 ### Update a user
 PATCH http://localhost:3000/2
@@ -36,7 +36,7 @@ POST http://localhost:3000/signup
 content-type: application/json
 
 {
-  "username": "test@tes.com",
+  "username": "test@test.com",
   "password": "12345678"
 }
 ### Sign in as the new user

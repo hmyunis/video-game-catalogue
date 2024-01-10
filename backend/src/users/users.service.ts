@@ -2,14 +2,10 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CollectionsService } from 'src/collections/collections.service';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private repo: Repository<User>,
-    private collectionsService: CollectionsService,
-  ) {}
+  constructor(@InjectRepository(User) private repo: Repository<User>) {}
   create(username: string, password: string) {
     const user = this.repo.create({ username, password });
     return this.repo.save(user);
@@ -18,6 +14,13 @@ export class UsersService {
     if (!id) return null;
     return this.repo.findOne({
       where: { id },
+    });
+  }
+
+  findSingle(username: string) {
+    if (!username) return null;
+    return this.repo.findOne({
+      where: { username },
     });
   }
 

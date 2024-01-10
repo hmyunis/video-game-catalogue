@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-const cookieSession = require('cookie-session');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,10 +12,7 @@ async function bootstrap() {
   };
 
   app.enableCors(corsOptions);
-  app.use(cookieSession({
-    keys: ['thisisakey']
-  }))
-  app.useGlobalPipes(new ValidationPipe({whitelist: true}))
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   await app.listen(3000);
 }
 bootstrap();
