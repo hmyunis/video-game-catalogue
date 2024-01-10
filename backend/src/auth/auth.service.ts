@@ -37,17 +37,4 @@ export class AuthService {
     }
     return user;
   }
-
-  async update(id: number, username: string, password: string) {
-    const users = await this.usersService.find(username);
-    console.log(id, users[0].id);
-    if (id !== users[0].id) {
-      throw new BadRequestException('username in use');
-    }
-    const salt = randomBytes(8).toString('hex');
-    const hash = (await scrypt(password, salt, 32)) as Buffer;
-    const result = salt + '.' + hash.toString('hex');
-    const user = await this.usersService.update(id, username, result);
-    return user;
-  }
 }
