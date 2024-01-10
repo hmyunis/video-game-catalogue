@@ -78,7 +78,7 @@ Content-Type: application/json
 }
 
 ### Get game by Id
-GET http://localhost:3000/games/3
+GET http://localhost:3000/games/1
 
 ### Get all games
 GET http://localhost:3000/games
@@ -96,11 +96,17 @@ DELETE http://localhost:3000/games/2
 ### Update a game
 # DOESN'T WORK IF SOME PROPERTIES ARE MISSING. WORKS IF ALL ARE GIVEN.
 #FIX: create an update DTO to make optional USING ?.
-PATCH http://localhost:3000/games/3
+PATCH http://localhost:3000/games/1
 Content-Type: application/json
 
 {
-  "title": "Borderlands 3"
+  "title": "Borderlands 5",
+  "description": "Classic shooting game with 3D visuals.",
+  "genre": "Shooting",
+  "platform": "PS3",
+  "publisher": "Bandai Namco",
+  "releaseDate": "2014-02-24",
+  "imageUrl": "/images/borderlands-2.jpg"
 }
 
 

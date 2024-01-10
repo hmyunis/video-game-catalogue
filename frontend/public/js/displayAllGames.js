@@ -32,8 +32,8 @@ function insertGameItemToHTML(gameObj) {
         <img src="images/avatar.jpg" alt="${title}" class="rounded-t-xl">
         <section class="p-3">
             <hgroup>
-                <h3 class="text-3xl" id="game-title">${title}</h3>
-                <h5 class="text-sm text-slate-500" id="game-release-date">${releaseDate}</h5>
+                <h3 class="text-3xl" id="game-title-${id}">${title}</h3>
+                <h5 class="text-sm text-slate-500" id="game-release-date-${id}">${releaseDate}</h5>
             </hgroup>
             <div class="flex justify-between mt-1">
                 <button class="text-sm text-blue-500" id="game-${id}-details" onclick="displayDetails(${id});">Details</button>
