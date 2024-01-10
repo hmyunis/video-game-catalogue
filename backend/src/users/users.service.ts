@@ -5,7 +5,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsersService {
+<<<<<<< HEAD
   constructor(@InjectRepository(User) private repo: Repository<User>) {}
+=======
+  constructor(@InjectRepository(User) private repo: Repository<User>,
+  private collectionsService: CollectionsService){}
+>>>>>>> 83d783c5879dbcb71a83a5ea4e04e0463c97c604
   create(username: string, password: string) {
     const user = this.repo.create({ username, password });
     return this.repo.save(user);
@@ -28,12 +33,12 @@ export class UsersService {
     return this.repo.find({ where: { username } });
   }
 
-  async update(id: number, username: string, password: string) {
+  async update(id: number, attrs: Partial<User>) {
     const user = await this.findOne(id);
     if (!user) {
       throw new NotFoundException('user not found');
     }
-    Object.assign(user, { username, password });
+    Object.assign(user, attrs);
     return this.repo.save(user);
   }
 
