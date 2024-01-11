@@ -56,8 +56,8 @@ content-type: application/json
   "username": "Admin",
   "password": "12345678"
 }
-
-
+###
+POST http://localhost:3000/signout
 
 
 
