@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 import { AuthCredentialDto } from 'src/auth/dto/auth-credentials.dto';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { AuthDto } from './dto/auth.dto';
+import { SkipAuth } from 'src/users/decorators/SkipAuth.decorator';
 
 @Controller()
 @Serialize(AuthDto)
