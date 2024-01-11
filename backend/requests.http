@@ -57,6 +57,9 @@ content-type: application/json
   "password": "123456789"
 }
 
+###
+GET http://localhost:3000/profiles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTcwNDk4MTA2OCwiZXhwIjoxNzA1MDY3NDY4fQ.0i9_tvcj_XKrEo4f40siFtefFfXBO3PZxGSocWISfFc
 
 
 

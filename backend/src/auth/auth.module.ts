@@ -6,6 +6,8 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AtStratagy } from './stratagy/at.stratagy';
 import { RtStrategy } from './stratagy/rt.stratagy';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from 'src/guards/at.guard';
 
 @Module({
   imports: [
@@ -21,7 +23,15 @@ import { RtStrategy } from './stratagy/rt.stratagy';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AtStratagy, RtStrategy],
+  providers: [
+    AuthService,
+    AtStratagy,
+    RtStrategy,
+    {
+      provide: APP_GUARD,
+      useClass: AtGuard,
+    },
+  ],
   exports: [AtStratagy, RtStrategy, PassportModule],
 })
 export class AuthModule {}
