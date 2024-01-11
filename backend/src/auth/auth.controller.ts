@@ -1,9 +1,9 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthCredentialDto } from 'src/auth/dto/auth-credentials.dto';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
-import { AuthDto } from './dto/auth.dto';
-import { SkipAuth } from 'src/users/decorators/SkipAuth.decorator';
+import { AuthCredentialDto } from '../auth/dto/auth-credentials.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { AuthDto } from '../auth/dto/auth.dto';
+import { SkipAuth } from '../users/decorators/SkipAuth.decorator';
 
 @Controller()
 @Serialize(AuthDto)
