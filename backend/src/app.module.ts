@@ -9,15 +9,23 @@ import { CollectionsModule } from './collections/collections.module';
 import { User } from './users/user.entity';
 import { Game } from './games/game.entity';
 import { Collection } from './collections/collection.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [TypeOrmModule.forRoot({
-    type: 'sqlite',
-    database: 'db.sqlite',
-    entities: [User, Game, Collection],
-    synchronize: true,
-  }) ,AuthModule, UsersModule, GamesModule, CollectionsModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [User, Game, Collection],
+      synchronize: true,
+    }),
+    ConfigModule.forRoot(),
+    AuthModule,
+    UsersModule,
+    GamesModule,
+    CollectionsModule,
+  ],
 })
 export class AppModule {}
