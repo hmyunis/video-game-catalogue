@@ -8,9 +8,7 @@ import {
   Patch,
   Post,
   Query,
-  UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/guards/auth.guard';
 import { CollectionsService } from './collections.service';
 import { CreateCollectionDto } from './dto/create-collection.dto';
 import { GameStatus } from './collection.entity';
@@ -20,7 +18,6 @@ export class CollectionsController {
   constructor(private collectionsService: CollectionsService) {}
 
   @Post('/new')
-  @UseGuards(AuthGuard)
   createCollection(@Body() body: CreateCollectionDto) {
     return this.collectionsService.create(body);
   }
@@ -39,7 +36,7 @@ export class CollectionsController {
     return this.collectionsService.find(status);
   }
 
-  @Get('/:userId')
+  @Get('/user/:userId')
   findUserGames(
     @Param('userId') userId: string,
     @Query('status') status: GameStatus,

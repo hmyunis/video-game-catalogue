@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Collection, GameStatus } from './collection.entity';
 import { CreateCollectionDto } from './dto/create-collection.dto';
 import { GamesService } from 'src/games/games.service';
+import { Game } from 'src/games/game.entity';
 
 @Injectable()
 export class CollectionsService {
@@ -30,8 +31,9 @@ export class CollectionsService {
 
   async getUserCollection(userId: number, status: GameStatus) {
     const collections = await this.repo.find({ where: { userId, status } });
-    const gameIds = await collections.map((col) => col.gameId);
-    return gameIds.map((id) => this.gamesService.findOne(id));
+    const gameIds = collections.map((col) => col.gameId);
+
+    return gameIds;
   }
 
   async update(id: number, attrs: Partial<Collection>) {

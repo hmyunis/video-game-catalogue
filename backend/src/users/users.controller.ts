@@ -6,18 +6,16 @@ import {
   NotFoundException,
   Param,
   Patch,
-  Post,
   Query,
-  Session,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dto/user.dto';
+import { AtGuard } from 'src/guards/at.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
-import { User } from './user.entity';
-import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('users')
 @Serialize(UserDto)
@@ -25,9 +23,9 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get('/whoami')
-  @UseGuards(AuthGuard) // Allow only signed in users
-  whoAmI(@CurrentUser() user: User) { // get the User who's currently signed in
-    return user;
+  @UseGuards(AtGuard)
+  whoAmI(@CurrentUser() id: number) {
+    return id;
   }
 
   @Get('/:id')
@@ -52,10 +50,5 @@ export class UsersController {
   @Patch('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
-  }
-
-  @Post('/signout')
-  signOut(@Session() session: any) {
-    session.userId = null;
   }
 }

@@ -2,6 +2,7 @@
 
 ### Get the currently signed in user
 GET http://localhost:3000/users/whoami
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTcwNDk4NTMzOCwiZXhwIjoxNzA1MDcxNzM4fQ.lhpadXD4ky2_8xD6avXi6xNUw9YrysRNXvWwzhBIByk
 
 ### Get user by id
 GET http://localhost:3000/users/1
@@ -15,15 +16,13 @@ DELETE http://localhost:3000/users/2
 
 
 ### Update a user
-PATCH http://localhost:3000/users/1
+PATCH http://localhost:3000/users/6
 content-type: application/json
 
 {
   "password": "aaaaaaaa"
 }
 
-### Sign out
-POST http://localhost:3000/users/signout
 
 
 
@@ -36,9 +35,10 @@ POST http://localhost:3000/signup
 content-type: application/json
 
 {
-  "username": "test@tst.com",
+  "username": "Admin",
   "password": "12345678"
 }
+
 ### Sign in as the new user
 POST http://localhost:3000/signin
 content-type: application/json
@@ -53,13 +53,9 @@ POST http://localhost:3000/signin
 content-type: application/json
 
 {
-  "username": "Mihawk_san",
-  "password": "123456789"
+  "username": "Admin",
+  "password": "12345678"
 }
-
-###
-GET http://localhost:3000/profiles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTcwNDk4MTA2OCwiZXhwIjoxNzA1MDY3NDY4fQ.0i9_tvcj_XKrEo4f40siFtefFfXBO3PZxGSocWISfFc
 
 
 
@@ -70,6 +66,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuY
 ### Add new Game
 POST http://localhost:3000/games/new
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MDQ5ODk3ODksImV4cCI6MTcwNTA3NjE4OX0.Me4JE-nUOAIsmmi5zmvtJnp_oqe7d4Y-a9M-EDBTfoQ
 
 {
   "title": "Borderlands 1",
@@ -92,25 +89,27 @@ GET http://localhost:3000/games?genre=Shooting
 
 ### Search a game
 # DOESN'T WORK
-GET http://localhost:3000/games/search?keyword=Borderlands%202
+GET http://localhost:3000/games/search/Borderlands%202
 
 ### Delete a game by id
-DELETE http://localhost:3000/games/2
+DELETE http://localhost:3000/games/61
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MDQ5ODk3ODksImV4cCI6MTcwNTA3NjE4OX0.Me4JE-nUOAIsmmi5zmvtJnp_oqe7d4Y-a9M-EDBTfoQ
 
 ### Update a game
 # DOESN'T WORK IF SOME PROPERTIES ARE MISSING. WORKS IF ALL ARE GIVEN.
 #FIX: create an update DTO to make optional USING ?.
 PATCH http://localhost:3000/games/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MDQ5ODk3ODksImV4cCI6MTcwNTA3NjE4OX0.Me4JE-nUOAIsmmi5zmvtJnp_oqe7d4Y-a9M-EDBTfoQ
 
 {
-  "title": "Borderlands 5",
-  "description": "Classic shooting game with 3D visuals.",
-  "genre": "Shooting",
-  "platform": "PS3",
-  "publisher": "Bandai Namco",
-  "releaseDate": "2014-02-24",
-  "imageUrl": "/images/borderlands-2.jpg"
+  "title": "Assassin's Creed Origins",
+    "description": "An action-adventure game set in ancient Egypt",
+    "genre": "Action",
+    "platform": "PlayStation 4, Xbox One, Windows",
+    "publisher": "Ubisoft",
+    "releaseDate": "2017-10-27",
+    "imageUrl": "images/games/ac-origins.jpg"
 }
 
 
@@ -141,7 +140,7 @@ GET http://localhost:3000/collections?status=PLANNED
 
 ### Get an array of game objects using userId+status
 # DOESN'T WORK
-GET http://localhost:3000/collections/3?status=PLANNED
+GET http://localhost:3000/collections/user/3?status=PLANNED
 
 ### Delete a collection by id
 DELETE http://localhost:3000/collections/1

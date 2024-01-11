@@ -8,20 +8,24 @@ import {
   Patch,
   Post,
   Query,
+  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
 import { CreateGameDto } from './dto/create-game.dto';
 import { GamesService } from './games.service';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AtGuard } from 'src/guards/at.guard';
+import { IsAdmin } from 'src/users/decorators/isAdmin.decorator';
 
 @Controller('games')
 export class GamesController {
   constructor(private gamesService: GamesService) {}
 
   @Post('/new')
-  @UseGuards(AuthGuard)
-  createGame(@Body() body: CreateGameDto) {
-    return this.gamesService.create(body);
+  @UseGuards(AtGuard)
+  createGame(@Body() body: CreateGameDto, @IsAdmin() isAdmin: Boolean) {
+    return isAdmin
+      ? this.gamesService.create(body)
+      : new UnauthorizedException('You are not the admin');
   }
 
   @Get('/:id')
@@ -38,18 +42,28 @@ export class GamesController {
     return this.gamesService.find(genre);
   }
 
-  @Get('/search')
-  searchGames(@Query('keyword') keyword: string) {
+  @Get('/search/:keyword')
+  searchGames(@Param() keyword: string) {
     return this.gamesService.findGames(keyword);
   }
 
   @Delete('/:id')
-  removeGame(@Param('id') id: string) {
-    return this.gamesService.remove(parseInt(id));
+  @UseGuards(AtGuard)
+  removeGame(@Param('id') id: string, @IsAdmin() isAdmin: boolean) {
+    return isAdmin
+      ? this.gamesService.remove(parseInt(id))
+      : new UnauthorizedException('You are not the admin');
   }
 
   @Patch('/:id')
-  updateGame(@Param('id') id: string, @Body() body: CreateGameDto) {
-    return this.gamesService.update(parseInt(id), body);
+  @UseGuards(AtGuard)
+  updateGame(
+    @Param('id') id: string,
+    @Body() body: CreateGameDto,
+    @IsAdmin() isAdmin: boolean,
+  ) {
+    return isAdmin
+      ? this.gamesService.update(parseInt(id), body)
+      : new UnauthorizedException('You are not the admin');
   }
 }
