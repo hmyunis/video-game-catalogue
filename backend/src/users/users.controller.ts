@@ -13,11 +13,11 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dto/user.dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.entity';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('users')
 @Serialize(UserDto)
@@ -55,7 +55,9 @@ export class UsersController {
   }
 
   @Post('/signout')
-  signOut(@Session() session: any) {
-    session.userId = null;
-  }
+signOut(@Session() session: any) {
+  session.userId = null;
+}
+
+  
 }
