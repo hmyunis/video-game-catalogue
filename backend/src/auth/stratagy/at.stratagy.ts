@@ -4,7 +4,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
-export class jwtStratagy extends PassportStrategy(Strategy) {
+export class AtStratagy extends PassportStrategy(Strategy) {
   constructor(private userService: UsersService) {
     super({
       secretOrKey:

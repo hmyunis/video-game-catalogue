@@ -36,7 +36,7 @@ POST http://localhost:3000/signup
 content-type: application/json
 
 {
-  "username": "test@test.com",
+  "username": "test@tst.com",
   "password": "12345678"
 }
 ### Sign in as the new user
