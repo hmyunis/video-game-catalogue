@@ -8,9 +8,10 @@ import {
   Res,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthCredentialDto } from 'src/auth/dto/auth-credentials.dto';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { AuthCredentialDto } from '../auth/dto/auth-credentials.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthDto } from './dto/auth.dto';
+import { Response } from 'express';
 
 @Controller()
 @Serialize(AuthDto)
@@ -19,13 +20,10 @@ export class AuthController {
 
   @HttpCode(HttpStatus.CREATED)
   @Post('/signup')
-  async createUser(
-    @Body() body: AuthCredentialDto,
-    @Res({ passthrough: true }) res,
-  ) {
+  async createUser(@Body() body: AuthCredentialDto, @Res() res: Response) {
     res.cookie(
       'user_token',
-      await this.authService.signUp(body.username, body.password),
+      await this.authService.createUser(body.username, body.password),
     );
   }
 

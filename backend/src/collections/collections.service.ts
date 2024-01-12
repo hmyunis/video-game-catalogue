@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Collection, GameStatus } from './collection.entity';
 import { CreateCollectionDto } from './dto/create-collection.dto';
-import { GamesService } from 'src/games/games.service';
-import { Game } from 'src/games/game.entity';
+import { GamesService } from '../games/games.service';
+import { Game } from '../games/game.entity';
 
 @Injectable()
 export class CollectionsService {
