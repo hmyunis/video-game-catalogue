@@ -19,7 +19,7 @@ describe('User COntroller E2E Test', () => {
     return request(app.getHttpServer())
       .post('/signup')
       .send({
-        username: 'Beleir11',
+        username: 'Beleoir11',
         password: 'LASTstanding',
         Confirmpassword: 'LASTstanding',
       })
@@ -29,7 +29,7 @@ describe('User COntroller E2E Test', () => {
     return request(app.getHttpServer())
       .post('/signup')
       .send({
-        username: 'Belei1',
+        username: 'Beiiioilei1',
         password: 'LASTstanding',
         Confirmpassword: 'LSTstanding',
       })

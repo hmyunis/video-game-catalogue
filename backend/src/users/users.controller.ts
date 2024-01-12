@@ -14,7 +14,7 @@ import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dto/user.dto';
-import { AtGuard } from 'src/guards/at.guard';
+import { AtGuard } from '../guards/at.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
 
 @Controller('users')

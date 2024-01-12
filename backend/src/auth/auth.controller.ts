@@ -18,7 +18,6 @@ import { Response } from 'express';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @HttpCode(HttpStatus.CREATED)
   @Post('/signup')
   async createUser(
     @Body() body: AuthCredentialDto,
