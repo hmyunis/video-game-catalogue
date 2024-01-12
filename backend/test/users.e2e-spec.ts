@@ -25,4 +25,14 @@ describe('User COntroller E2E Test', () => {
       })
       .expect(201);
   });
+  it('should Return 400 bad request when passwords dont match', () => {
+    return request(app.getHttpServer())
+      .post('/signup')
+      .send({
+        username: 'Belei1',
+        password: 'LASTstanding',
+        Confirmpassword: 'LSTstanding',
+      })
+      .expect(400);
+  });
 });
