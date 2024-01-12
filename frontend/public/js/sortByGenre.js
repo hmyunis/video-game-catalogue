@@ -1,15 +1,25 @@
-const browseContainer = document.getElementById('browse-games-container');
+const sortButtonContainer = document.getElementById('sort-btn-container');
+const browseGamesContainer = document.getElementById('browse-games-container');
 
-fetch('http://localhost:3000/games')
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((game) => {
-            insertGameItemsToHTML(game);
+sortButtonContainer.addEventListener('click', (event) => {
+    if (event.target === sortButtonContainer) return;
+    browseGamesContainer.innerHTML = '';
+    const clickedGenre = event.target.innerHTML.trim();
+    clearSelectedStyles();
+    event.target.classList.contains('bg-green-400')
+        ? event.target.classList.remove('bg-green-400')
+        : event.target.classList.add('bg-green-400');
+
+    fetch(`http://localhost:3000/games?genre=${clickedGenre}`)
+        .then((res) => res.json())
+        .then((games) => {
+            games.forEach((game) => {
+                insertGameToHTML(game);
+            });
         });
-    })
-    .catch((error) => console.error('ERROR: ', error));
+});
 
-function insertGameItemsToHTML(gameObj, userId = 3) {
+function insertGameToHTML(gameObj, userId=3) {
     const { id, title, releaseDate, imageUrl } = gameObj;
     const gameItemTemplate = `
     <div id="game-id-${id}" class="w-72 h-1/4 m-5 text-white rounded-xl bg-slate-900 hover:-translate-y-3 transition-all duration-300">
@@ -34,5 +44,13 @@ function insertGameItemsToHTML(gameObj, userId = 3) {
         </section>
     </div>
     `;
-    browseContainer?.insertAdjacentHTML('beforeend', gameItemTemplate);
+    browseGamesContainer.insertAdjacentHTML('beforeend', gameItemTemplate);
+}
+
+function clearSelectedStyles() {
+    const childNodes = sortButtonContainer.childNodes;
+    const elementNodes = Array.from(childNodes).filter((node) => node.nodeType === 1);
+    elementNodes.forEach((button) => {
+        button.classList.remove('bg-green-400');
+    });
 }
