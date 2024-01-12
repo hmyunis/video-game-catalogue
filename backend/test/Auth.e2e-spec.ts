@@ -35,4 +35,13 @@ describe('User COntroller E2E Test', () => {
       })
       .expect(400);
   });
+  it('should Return 400 bad request when password is incorrect for signin', () => {
+    return request(app.getHttpServer())
+      .post('/signin')
+      .send({
+        username: 'Beiiioilei1',
+        password: 'STstanding',
+      })
+      .expect(400);
+  });
 });
