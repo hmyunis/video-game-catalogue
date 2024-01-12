@@ -2,7 +2,6 @@
 
 ### Get the currently signed in user
 GET http://localhost:3000/users/whoami
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTcwNDk4NTMzOCwiZXhwIjoxNzA1MDcxNzM4fQ.lhpadXD4ky2_8xD6avXi6xNUw9YrysRNXvWwzhBIByk
 
 ### Get user by id
 GET http://localhost:3000/users/1
@@ -66,7 +65,6 @@ POST http://localhost:3000/signout
 ### Add new Game
 POST http://localhost:3000/games/new
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MDQ5ODk3ODksImV4cCI6MTcwNTA3NjE4OX0.Me4JE-nUOAIsmmi5zmvtJnp_oqe7d4Y-a9M-EDBTfoQ
 
 {
   "title": "Borderlands 1",
@@ -92,8 +90,8 @@ GET http://localhost:3000/games?genre=Shooting
 GET http://localhost:3000/games/search/Borderlands%202
 
 ### Delete a game by id
-DELETE http://localhost:3000/games/61
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MDQ5ODk3ODksImV4cCI6MTcwNTA3NjE4OX0.Me4JE-nUOAIsmmi5zmvtJnp_oqe7d4Y-a9M-EDBTfoQ
+DELETE http://localhost:3000/games/63
+
 
 ### Update a game
 # DOESN'T WORK IF SOME PROPERTIES ARE MISSING. WORKS IF ALL ARE GIVEN.

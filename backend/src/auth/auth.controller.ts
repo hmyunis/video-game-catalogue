@@ -23,10 +23,9 @@ export class AuthController {
     @Body() body: AuthCredentialDto,
     @Res({ passthrough: true }) res,
   ) {
-    res.cookie(
-      'user_token',
-      await this.authService.signUp(body.username, body.password),
-    );
+    const token = await this.authService.signUp(body.username, body.password);
+    res.cookie('user_token', token);
+    return JSON.stringify(token);
   }
 
   @HttpCode(HttpStatus.OK)
@@ -35,10 +34,9 @@ export class AuthController {
     @Body() body: AuthCredentialDto,
     @Res({ passthrough: true }) res,
   ) {
-    res.cookie(
-      'user_token',
-      await this.authService.signIn(body.username, body.password),
-    );
+    const token = await this.authService.signIn(body.username, body.password);
+    res.cookie('user_token', token);
+    return JSON.stringify(token);
   }
 
   @HttpCode(HttpStatus.OK)
