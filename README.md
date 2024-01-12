@@ -4,6 +4,10 @@
 
 This project centers on creating a video game catalogue REST API tailored for Ethiopia. The user interface prioritizes seamless Authentication/Authorization processes, featuring easy Login, Signup, and Role Management. At its core, the API facilitates the creation, update, and listing of game entries, providing a centralized hub for gaming information in Ethiopia. With RESTful principles, good input validation, and testing, our solution ensures data integrity and reliable access to the local gaming community.
 
+## Reasons for choosing MySQL as our Database
+
+We decided to use MySQL as the behind-the-scenes database for our video game catalogue web application because it's really good at organizing and managing all the information about the games we have. It ensures that when you search for a game or browse through different categories, everything works smoothly and accurately. We also went for it because it's known for being secure and reliable, making sure the data is safe. The team chose TypeORM to build the backend because it makes it easier to create and maintain the database, ensuring a smooth experience for the user when exploring and discovering new games.
+
 ## Project Members
 
 - **Member 1:**
