@@ -6,14 +6,14 @@ function saveToCollection(gameId) {
     if (selectedOption === 'ADD TO') return;
     fetch(`http://localhost:3000/collections/new`, {
         method: 'POST',
-        headers: {
-            'content-type': 'application/json; charset-utf8',
-        },
         body: JSON.stringify({
-            userId: userId,
-            gameId: gameId,
+            userId: parseInt(userId),
+            gameId: parseInt(gameId),
             status: selectedOption,
         }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
     })
         .then(() => {
             createPopUpMsg(`${selectedOption} collection updated successfully.`);
@@ -37,6 +37,7 @@ function createPopUpMsg(msg) {
     newElement.innerHTML = modalHTML;
     document.body.appendChild(newElement);
     const modalContainer = document.getElementById('modalContainer');
+    const modalContent = document.getElementById('modalContent');
     setTimeout(function () {
         modalContainer.style.opacity = '1';
         modalContent.style.transform = 'translate(-5%, -10%) scale(1)';
