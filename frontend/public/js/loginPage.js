@@ -24,15 +24,12 @@ form.addEventListener("submit", async function (event) {
       }),
     }
   )
-    .then((response) => {
-      response.json();
-    })
+    .then((res) => res.json())
     .then((data) => {
       document.cookie = `user_token=${data};path=/`;
-      window.location.href = "home.html";
     })
-    .catch((error) => {
-      console.error("Error:", error);
+    .then(() => {
+      window.location.href = "home.html";
     });
 });
 
