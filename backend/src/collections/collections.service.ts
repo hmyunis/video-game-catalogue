@@ -52,4 +52,13 @@ export class CollectionsService {
     }
     return this.repo.remove(collection);
   }
+
+  async removeByThree(status: GameStatus, gameId: number, userId: number) {
+    const theCollection = await this.repo.find({
+      where: { status, gameId, userId },
+    });
+    const collectionId = await theCollection[0].id;
+    const collection = await this.findOne(collectionId);
+    return this.repo.remove(collection);
+  }
 }

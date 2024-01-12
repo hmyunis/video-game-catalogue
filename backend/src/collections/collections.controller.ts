@@ -49,6 +49,19 @@ export class CollectionsController {
     return this.collectionsService.remove(parseInt(id));
   }
 
+  @Delete()
+  removeByThree(
+    @Query('status') status: GameStatus,
+    @Query('gameId') gameId: string,
+    @Query('userId') userId: string,
+  ) {
+    return this.collectionsService.removeByThree(
+      status,
+      parseInt(gameId),
+      parseInt(userId),
+    );
+  }
+
   @Patch('/:id')
   updateCollection(@Param('id') id: string, @Body() body: CreateCollectionDto) {
     return this.collectionsService.update(parseInt(id), body);
