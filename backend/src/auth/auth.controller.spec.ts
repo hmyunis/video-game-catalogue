@@ -28,7 +28,7 @@ describe('AuthController', () => {
   
 
   it('should sign in a user', async () => {
-    const authCredentialsDto: AuthCredentialDto = { username: 'test', password: 'test' };
+    const authCredentialsDto: AuthCredentialDto = { username: 'test', password: 'test', Confirmpassword: 'test' };
     const res = { cookie: jest.fn(), status: jest.fn().mockReturnThis(), send: jest.fn() };
 
     await controller.signIn(authCredentialsDto, res as any);

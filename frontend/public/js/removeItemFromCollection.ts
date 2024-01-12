@@ -1,20 +1,16 @@
-async function deleteGame(gameId: number){
-    // const userId = await fetch('http://localhost:3000/users/whoami', {
-    //     headers: {
-    //         Authorization: localStorage.getItem('authToken'),
-    //     },
-    // })
-    //     .then((res) => res.json())
-    //     .then((id) => id);
-    const userId: number = 3; // Replace this with the actual logic to get the user ID
+async function deleteGame(gameId: number) {
+    const userId: number = await getLoggedInUsersId();
     console.log(getActiveTabName(), gameId, userId);
 
-    fetch(`http://localhost:3000/collections?status=${getActiveTabName()}&gameId=${gameId}&userId=${userId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-type': 'application/json; charset-utf8',
-        },
-    })
+    fetch(
+        `http://localhost:3000/collections?status=${getActiveTabName()}&gameId=${gameId}&userId=${userId}`,
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json; charset-utf8',
+            },
+        }
+    )
         .then((res) => res.json())
         .then((deletedGame) => {
             createPopUpMessage(`Game removed successfully ${deletedGame[0]?.title}.`);
@@ -23,6 +19,16 @@ async function deleteGame(gameId: number){
                 gameElement.remove();
             }
         });
+}
+
+async function getLoggedInUsersId() {
+    const response = await fetch('http://localhost:3000/users/whoami', {
+        headers: {
+            Authorization: localStorage.getItem('authToken'),
+        },
+    });
+    const userId = await response.json();
+    return userId;
 }
 
 function getActiveTabName(): string {

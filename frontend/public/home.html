@@ -27,28 +27,6 @@
           />
         </div>
         <div
-          class="self-center relative h-2/3 ml-auto mr-5 max-md:h-5/6 max-md:mx-auto"
-        >
-          <input
-            id="search-bar-field"
-            type="text"
-            class="border border-gray-300 focus:outline-none focus:border-gray-400 focus:border-2 rounded-md h-full py-2 px-14 pl-10 leading-5 text-black transition-all"
-            maxlength="20"
-            placeholder="Search a game..."
-          />
-          <img
-            class="absolute left-2 top-2 h-5 w-5 max-md:w-3 max-md:h-3"
-            src="images/svg/search-icon.svg"
-            alt="Search Icon"
-          />
-          <button
-            id="search-btn"
-            class="absolute bg-slate-400 hover:bg-slate-600 hover:text-gray-300 h-full font-semibold rounded-r-md right-0 px-4 text-black"
-          >
-            Go
-          </button>
-        </div>
-        <div
           class="hidden gap-2 justify-between md:justify-start md:gap-8 w-full md:w-auto border-t-black md:border-non min-[480px]:flex min-[480px]:flex-wrap md:flex-nowrap"
         >
           <div
@@ -92,7 +70,129 @@
     </header>
     <main class="bg-[#272B34] min-h-screen pt-40 min-[480px]:pt-20 md:pt-0">
       <div class="p-5">
-        <h1 class="text-5xl py-2">Browse</h1>
+        <div class="flex justify-left items-center">
+          <h1 class="text-5xl py-2">Browse</h1>
+          <div class="hidden" id="renderAddGame">
+            <button
+              class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all"
+              onclick="renderAddGame()"
+            >
+              Add
+            </button>
+          </div>
+          <div class="hidden" id="renderDeleteGame">
+            <button
+              class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all"
+              onclick="renderDeleteGame()"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <form class="hidden" id="addgameform">
+          <ul>
+            <li>
+              <label
+                ><input
+                  placeholder="game title"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="title"
+                  id="title"
+                  type="text"
+                />title</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game description"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="description"
+                  id="description"
+                  type="text"
+                />description</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game genre"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="genre"
+                  id="genre"
+                  type="text"
+                />genre</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game platform"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="platform"
+                  id="platform"
+                  type="text"
+                />platform</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game publisher"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="publisher"
+                  id="publisher"
+                  type="text"
+                />publisher</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game image"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="imageURL"
+                  id="imageURL"
+                  type="text"
+                />imageURL</label
+              >
+            </li>
+            <li>
+              <label
+                ><input
+                  placeholder="game releaseDate"
+                  class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+                  name="releaseDate"
+                  id="releaseDate"
+                  type="text"
+                />releaseDate</label
+              >
+            </li>
+            <li>
+              <button
+                class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all"
+                onclick="addGame(event)"
+              >
+                submit
+              </button>
+            </li>
+          </ul>
+        </form>
+        <form class="hidden" id="deletegameform">
+          <input
+            placeholder="enter game id"
+            class="mr-3 p-2 w-flil min-[480px]:w-[300px] h-10 rounded-lg text-black border-2 border-slate-500"
+            name="gameId"
+            id="gameId"
+            type="text"
+          />
+          <button
+            class="h-fit self-center text-black bg-slate-400 px-4 py-1 text-xl font-semibold rounded-3xl m-3 hover:bg-white hover:scale-110 transition-all"
+            onclick="removeGame(event)"
+          >
+            submit
+          </button>
+        </form>
         <div class="flex flex-wrap" id="sort-btn-container">
           <p class="m-3">Sort by Genre:</p>
           <button
@@ -161,5 +261,6 @@
     <script src="./js/sortByGenre.js"></script>
     <script src="./js/displayGameDetails.js"></script>
     <script src="./js/searchGames.js"></script>
+    <script src="./js/adminizaer.js"></script>
   </body>
 </html>
