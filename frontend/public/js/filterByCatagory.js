@@ -5,9 +5,13 @@ async function filterByTab(button) {
     button.parentElement.classList.add('text-[#1efe80]', 'border-r-4', 'border-[#1EFE80]');
     clearOthersStyles(button);
     gameCollectionContainer.innerHTML = '';
-    // const response = await fetch('http://localhost:3000/users/whoami');
-    // const userId = await response.json().id;
-    const userId = 3; // until whoami works
+    const response = await fetch('http://localhost:3000/users/whoami', {
+        headers: {
+            Authorization: localStorage.getItem('authToken'),
+        },
+    });
+    const userId = await response.json();
+    console.log(userId);
     fetch(`http://localhost:3000/collections/user/${userId}?status=${clickedStatus}`)
         .then((res) => res.json())
         .then((gameIds) => {

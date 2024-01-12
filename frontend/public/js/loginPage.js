@@ -21,6 +21,7 @@ form.addEventListener("submit", async function (event) {
       body: JSON.stringify({
         username: username,
         password: password,
+        Confirmpassword: password,
       }),
     }
   )

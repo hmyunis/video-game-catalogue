@@ -9,7 +9,17 @@ fetch('http://localhost:3000/games')
     })
     .catch((error) => console.error('ERROR: ', error));
 
-function insertGameItemsToHTML(gameObj, userId = 3) {
+async function getSignedInUsersId(){
+    const response = await fetch('http://localhost:3000/users/whoami', {
+        headers: {
+            Authorization: localStorage.getItem('authToken'),
+        },
+    });
+    const userId = await response.json();
+    return userId;
+}    
+
+function insertGameItemsToHTML(gameObj, userId) {
     const { id, title, releaseDate, imageUrl } = gameObj;
     const gameItemTemplate = `
     <div id="game-id-${id}" class="w-72 h-1/4 m-5 text-white rounded-xl bg-slate-900 hover:-translate-y-3 transition-all duration-300">
