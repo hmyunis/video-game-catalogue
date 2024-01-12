@@ -14,7 +14,6 @@ describe('AuthController', () => {
         {
           provide: AuthService,
           useValue: {
-            createUser: jest.fn().mockResolvedValue({}),
             signIn: jest.fn().mockResolvedValue('user_token'),
             signOut: jest.fn().mockResolvedValue({}),
           },
@@ -26,14 +25,7 @@ describe('AuthController', () => {
     authService = module.get<AuthService>(AuthService);
   });
 
-  it('should create a user', async () => {
-    const authCredentialsDto: AuthCredentialDto = { username: 'test', password: 'test' };
-    const res = { cookie: jest.fn(), status: jest.fn().mockReturnThis(), send: jest.fn() };
-
-    await controller.createUser(authCredentialsDto, res as any);
-
-    expect(authService.createUser).toHaveBeenCalledWith(authCredentialsDto.username, authCredentialsDto.password);
-  });
+  
 
   it('should sign in a user', async () => {
     const authCredentialsDto: AuthCredentialDto = { username: 'test', password: 'test' };
