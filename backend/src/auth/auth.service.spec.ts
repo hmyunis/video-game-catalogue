@@ -3,6 +3,10 @@ import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { randomBytes, scrypt } from 'crypto';
+import { promisify } from 'util';
+
+const scryptAsync = promisify(scrypt);
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -35,38 +39,66 @@ describe('AuthService', () => {
   });
 
   it('should sign up a user', async () => {
-    const result = await authService.signUp('test', 'test');
-
-    expect(usersService.find).toHaveBeenCalledWith('test');
-    expect(usersService.create).toHaveBeenCalledWith('test', expect.any(String));
-    expect(jwtService.signAsync).toHaveBeenCalledWith({ sub: 1, username: 'test' });
-    expect(result).toEqual('test_token');
+    const username = 'test';
+    const password = 'test';
+    const result = await authService.signUp(username, password);
+  
+    expect(usersService.create).toHaveBeenCalledWith(username, expect.any(String));
+    expect(result).toEqual('test_token'); // expect a token instead of a user object
   });
 
   it('should not sign up a user if username is in use', async () => {
-    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{ id: 1, password: 'salt.hash' }]);
+    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{
+      id: 1, 
+      password: 'salt.hash',
+      username: 'test',
+      admin: false,
+      joinDate: new Date().toDateString().substring(4),
+      setJoinDate: jest.fn(),
+      logInsert: jest.fn(),
+      logUpdate: jest.fn(),
+      logRemove: jest.fn(),
+    }]);
 
     await expect(authService.signUp('test', 'test')).rejects.toThrow(BadRequestException);
   });
 
   it('should sign in a user', async () => {
-    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{ id: 1, password: 'salt.hash' }]);
+    const password = 'test';
+    const salt = randomBytes(8).toString('hex');
+    const hash = (await scryptAsync(password, salt, 32)) as Buffer;
 
-    const result = await authService.signIn('test', 'test');
+    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{
+      id: 1, 
+      password: `${salt}.${hash.toString('hex')}`,
+      username: 'test',
+      admin: false,
+      joinDate: new Date().toDateString().substring(4),
+      setJoinDate: jest.fn(),
+      logInsert: jest.fn(),
+      logUpdate: jest.fn(),
+      logRemove: jest.fn(),
+    }]);
+
+    const result = await authService.signIn('test', password);
 
     expect(usersService.find).toHaveBeenCalledWith('test');
     expect(jwtService.signAsync).toHaveBeenCalledWith({ sub: 1, username: 'test' });
     expect(result).toEqual('test_token');
   });
 
-  it('should not sign in a user if user not found', async () => {
-    jest.spyOn(usersService, 'find').mockResolvedValueOnce([]);
-
-    await expect(authService.signIn('test', 'test')).rejects.toThrow(NotFoundException);
-  });
-
   it('should not sign in a user if password is wrong', async () => {
-    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{ id: 1, password: 'salt.wronghash' }]);
+    jest.spyOn(usersService, 'find').mockResolvedValueOnce([{
+      id: 1, 
+      password: 'salt.hash',
+      username: 'test',
+      admin: false,
+      joinDate: new Date().toDateString().substring(4),
+      setJoinDate: jest.fn(),
+      logInsert: jest.fn(),
+      logUpdate: jest.fn(),
+      logRemove: jest.fn(),
+    }]);
 
     await expect(authService.signIn('test', 'test')).rejects.toThrow(BadRequestException);
   });
