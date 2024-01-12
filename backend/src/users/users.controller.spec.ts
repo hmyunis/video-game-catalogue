@@ -1,79 +1,85 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { AuthService } from '../auth/auth.service';
-import { User } from './user.entity';
-import { NotFoundException } from '@nestjs/common';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Repository } from 'typeorm';
+import { User } from './user.entity'; // adjust the path according to your project structure
+import { getRepositoryToken } from '@nestjs/typeorm';
 
-describe('UsersController', () => {
-  let controller: UsersController;
-  let fakeUsersService: Partial<UsersService>;
-  let fakeAuthService: Partial<AuthService>;
+describe('UsersService', () => {
+  let service: UsersService;
+  let repo: Repository<User>;
 
   beforeEach(async () => {
-    fakeUsersService = {
-      findOne: (id: number) => {
-        return Promise.resolve({ username: 'asdf', password: 'asdf' } as User);
-      },
-      find: (username: string) => {
-        return Promise.resolve([{ username: 'asdf' }] as User[]);
-      },
-      remove: (id: number) => {
-        const user = { id, username: 'asdf', password: 'asdf' } as User;
-        return Promise.resolve(user);
-      },
-      update: (id: number, attributes: UpdateUserDto) => {
-        const user = { ...attributes, id } as User;
-        return Promise.resolve(user);
-      },
-    };
-    fakeAuthService = {
-      
-    };
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [UsersController],
       providers: [
-        { provide: UsersService, useValue: fakeUsersService },
-        { provide: AuthService, useValue: fakeAuthService },
+        UsersService,
+        {
+          provide: getRepositoryToken(User),
+          useValue: {
+            create: jest.fn().mockResolvedValue(new User()),
+            save: jest.fn().mockResolvedValue(new User()),
+            findOne: jest.fn().mockResolvedValue(new User()),
+            find: jest.fn().mockResolvedValue([new User()]),
+            remove: jest.fn().mockResolvedValue(new User()),
+          },
+        },
       ],
     }).compile();
 
-    controller = module.get<UsersController>(UsersController);
+    service = module.get<UsersService>(UsersService);
+    repo = module.get<Repository<User>>(getRepositoryToken(User));
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  it('should create a user', async () => {
+    const user = await service.create('test', 'test');
+    expect(repo.create).toBeCalledWith({ username: 'test', password: 'test' });
+    expect(repo.save).toBeCalledWith(expect.any(Promise));
+    expect(user).toEqual(new User());
   });
 
-  it('should return the current user', async () => {
-    const user = { username: 'asdf', password: 'asdf' } as User;
-    expect(await controller.whoAmI(user)).toEqual(user);
+  it('should find one user by id', async () => {
+    const user = await service.findOne(1);
+    expect(repo.findOne).toBeCalledWith({ where: { id: 1 } });
+    expect(user).toEqual(new User());
   });
 
-  it('should find a user by id', async () => {
-    const user = { username: 'asdf', password: 'asdf' } as User;
-    expect(await controller.findUser('1')).toEqual(user);
+  it('should find one user by username', async () => {
+    const user = await service.findSingle('test');
+    expect(repo.findOne).toBeCalledWith({ where: { username: 'test' } });
+    expect(user).toEqual(new User());
   });
 
-  it('should remove a user by id', async () => {
-    fakeUsersService.remove = async (id: number) => {
-      return { id, username: '', password: '', admin: false } as User;
-    };
-    expect(await controller.removeUser('1')).toEqual({ id: 1, username: '', password: '', admin: false });
+  it('should find users by username', async () => {
+    const users = await service.find('test');
+    expect(repo.find).toBeCalledWith({ where: { username: 'test' } });
+    expect(users).toEqual([new User()]);
   });
 
   it('should update a user', async () => {
-    const updateUserDto = { username: 'updatedTest', password: 'updatedTest' };
-    fakeUsersService.update = async (id: number, attributes: UpdateUserDto) => {
-      return { ...updateUserDto, id } as User;
-    };
-    expect(await controller.updateUser('1', updateUserDto)).toEqual({ ...updateUserDto, id: 1 });
+    const user = new User();
+    user.id = 1;
+    user.username = 'test';
+    user.password = 'test';
+
+    jest.spyOn(service, 'findOne').mockResolvedValue(user);
+    const updatedUser = await service.update(1, { username: 'updatedTest', password: 'test' });
+
+    expect(service.findOne).toBeCalledWith(1);
+    expect(repo.save).toBeCalledWith({ ...user, username: 'updatedTest', password: 'test' });
+    expect(updatedUser).toEqual(new User());
   });
 
-  it('should sign out a user', () => {
-    const session = { userId: 1 };
-    controller.signOut(session);
-    expect(session.userId).toBeNull();
+  it('should remove a user', async () => {
+    const user = new User();
+    user.id = 1;
+    user.username = 'test';
+    user.password = 'test';
+
+    jest.spyOn(service, 'findOne').mockResolvedValue(user);
+    const removedUser = await service.remove(1);
+
+    expect(service.findOne).toBeCalledWith(1);
+    expect(repo.remove).toBeCalledWith(user);
+    expect(removedUser).toEqual(new User());
   });
 });
