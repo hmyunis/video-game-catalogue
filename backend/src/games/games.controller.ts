@@ -13,8 +13,8 @@ import {
 } from '@nestjs/common';
 import { CreateGameDto } from './dto/create-game.dto';
 import { GamesService } from './games.service';
-import { AtGuard } from 'src/guards/at.guard';
-import { IsAdmin } from 'src/users/decorators/isAdmin.decorator';
+import { AtGuard } from '../guards/at.guard';
+import { IsAdmin } from '../users/decorators/isAdmin.decorator';
 
 @Controller('games')
 export class GamesController {

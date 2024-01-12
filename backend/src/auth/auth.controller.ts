@@ -8,9 +8,10 @@ import {
   Res,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthCredentialDto } from 'src/auth/dto/auth-credentials.dto';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { AuthCredentialDto } from '../auth/dto/auth-credentials.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthDto } from './dto/auth.dto';
+import { Response } from 'express';
 
 @Controller()
 @Serialize(AuthDto)
