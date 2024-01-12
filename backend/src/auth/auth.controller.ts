@@ -24,7 +24,6 @@ export class AuthController {
     @Res({ passthrough: true }) res,
   ) {
     const token = await this.authService.signUp(body.username, body.password);
-    res.cookie('user_token', token);
     return JSON.stringify(token);
   }
 
@@ -35,7 +34,6 @@ export class AuthController {
     @Res({ passthrough: true }) res,
   ) {
     const token = await this.authService.signIn(body.username, body.password);
-    res.cookie('user_token', token);
     return JSON.stringify(token);
   }
 
