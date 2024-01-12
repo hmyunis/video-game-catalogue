@@ -37,4 +37,10 @@ export class AuthController {
     const token = await this.authService.signIn(body.username, body.password);
     return JSON.stringify(token);
   }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('/signout')
+  signOut(@Res({ passthrough: true }) res) {
+    res.clearCookie('user_token');
+  }
 }
