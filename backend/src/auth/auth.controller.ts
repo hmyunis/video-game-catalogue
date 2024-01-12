@@ -36,6 +36,7 @@ export class AuthController {
   ) {
     const token = await this.authService.signIn(body.username, body.password);
     return JSON.stringify(token);
+    // return token;
   }
 
   @HttpCode(HttpStatus.OK)
