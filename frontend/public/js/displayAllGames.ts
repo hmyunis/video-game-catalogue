@@ -3,13 +3,14 @@ const browseContainer = document.getElementById('browse-games-container');
 fetch('http://localhost:3000/games')
     .then((response) => response.json())
     .then((data) => {
-        data.forEach((game) => {
-            insertGameItemsToHTML(game);
+        data.forEach(async (game) => {
+            const userId = await getSignedInUsersId();
+            insertGameItemsToHTML(game, userId);
         });
     })
     .catch((error) => console.error('ERROR: ', error));
 
-async function getSignedInUsersId(){
+async function getSignedInUsersId() {
     const response = await fetch('http://localhost:3000/users/whoami', {
         headers: {
             Authorization: localStorage.getItem('authToken'),
@@ -17,7 +18,7 @@ async function getSignedInUsersId(){
     });
     const userId = await response.json();
     return userId;
-}    
+}
 
 function insertGameItemsToHTML(gameObj, userId) {
     const { id, title, releaseDate, imageUrl } = gameObj;

@@ -38,24 +38,48 @@ function deleteGame(gameId) {
     return __awaiter(this, void 0, void 0, function () {
         var userId;
         return __generator(this, function (_a) {
-            userId = 3;
-            console.log(getActiveTabName(), gameId, userId);
-            fetch("http://localhost:3000/collections?status=".concat(getActiveTabName(), "&gameId=").concat(gameId, "&userId=").concat(userId), {
-                method: 'DELETE',
-                headers: {
-                    'Content-type': 'application/json; charset-utf8',
-                },
-            })
-                .then(function (res) { return res.json(); })
-                .then(function (deletedGame) {
-                var _a;
-                createPopUpMessage("Game removed successfully ".concat((_a = deletedGame[0]) === null || _a === void 0 ? void 0 : _a.title, "."));
-                var gameElement = document.getElementById("game-id-".concat(gameId));
-                if (gameElement) {
-                    gameElement.remove();
-                }
-            });
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getLoggedInUsersId()];
+                case 1:
+                    userId = _a.sent();
+                    console.log(getActiveTabName(), gameId, userId);
+                    fetch("http://localhost:3000/collections?status=".concat(getActiveTabName(), "&gameId=").concat(gameId, "&userId=").concat(userId), {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-type': 'application/json; charset-utf8',
+                        },
+                    })
+                        .then(function (res) { return res.json(); })
+                        .then(function (deletedGame) {
+                        var _a;
+                        createPopUpMessage("Game removed successfully ".concat((_a = deletedGame[0]) === null || _a === void 0 ? void 0 : _a.title, "."));
+                        var gameElement = document.getElementById("game-id-".concat(gameId));
+                        if (gameElement) {
+                            gameElement.remove();
+                        }
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function getLoggedInUsersId() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, userId;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch('http://localhost:3000/users/whoami', {
+                        headers: {
+                            Authorization: localStorage.getItem('authToken'),
+                        },
+                    })];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    userId = _a.sent();
+                    return [2 /*return*/, userId];
+            }
         });
     });
 }
