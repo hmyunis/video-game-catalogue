@@ -26,6 +26,7 @@ form.addEventListener("submit", async function (event) {
   )
     .then((res) => res.json())
     .then((data) => {
+      localStorage.setItem("authToken", `Bearer ${data}`);
       document.cookie = `user_token=${data};path=/`;
     })
     .then(() => {
