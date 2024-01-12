@@ -16,8 +16,12 @@ import { ConfigModule } from '@nestjs/config';
   providers: [AppService],
   imports: [
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '3832',
+      database: 'video_game_db',
       entities: [User, Game, Collection],
       synchronize: true,
     }),
