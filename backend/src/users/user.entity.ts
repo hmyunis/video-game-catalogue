@@ -10,7 +10,7 @@ import {
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({ unique: true })
@@ -19,7 +19,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column({default: false})
+  @Column({ default: false })
   admin: boolean;
 
   @Column({ nullable: true })
