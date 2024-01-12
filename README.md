@@ -1,5 +1,8 @@
 ## Group Project Title: Video Game Catalogue
-
+Admin credentials: {
+username: Admin
+password: 12345678
+}
 ## Overview
 
 This project centers on creating a video game catalogue REST API tailored for Ethiopia. The user interface prioritizes seamless Authentication/Authorization processes, featuring easy Login, Signup, and Role Management. At its core, the API facilitates the creation, update, and listing of game entries, providing a centralized hub for gaming information in Ethiopia. With RESTful principles, good input validation, and testing, our solution ensures data integrity and reliable access to the local gaming community.
