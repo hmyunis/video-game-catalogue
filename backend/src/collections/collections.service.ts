@@ -8,6 +8,10 @@ import { Game } from '../games/game.entity';
 
 @Injectable()
 export class CollectionsService {
+  public async createCollection(dto: CreateCollectionDto): Promise<Collection> {
+    // Implementation here...
+    return null; // Replace null with the actual implementation
+  }
   constructor(
     @InjectRepository(Collection) private repo: Repository<Collection>,
     private gamesService: GamesService,
